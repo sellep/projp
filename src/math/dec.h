@@ -4,6 +4,11 @@
 #include "../defs.h"
 
 #define DEC_LEN 31
+#define DEC_BASE 32
+
+#define VALUE_MAX 4294967295u
+#define VALUE(x)(x & VALUE_MAX)
+#define OVERFLOW(x)(x >> DEC_BASE)
 
 typedef struct
 {
@@ -18,6 +23,8 @@ enum dec_cmp_e
 	EQUAL = 0,
 	ABOVE = 1
 };
+
+typedef uint CARRY;
 
 #define POSITIVE 1
 #define NEGATIVE 0

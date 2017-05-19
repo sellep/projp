@@ -4,6 +4,7 @@ void dec_rsub(dec * const c, dec const * const a, dec const * const b)
 {
 	int i;
 	uint val;
+	uint sub;
 	ulong tmp;
 	CARRY carry = 0;
 
