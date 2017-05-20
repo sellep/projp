@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-#define ITERATIONS 10000
+#define ITERATIONS 100000
 
 extern int dec_add_zero(uint const);
 extern int dec_uadd_commutative(uint const);
@@ -10,6 +10,8 @@ extern int dec_add_commutative(uint const);
 
 int main()
 {
+	srand(time(NULL));
+
 	int tres;
 
 	printf("dec_uadd_commutative ");

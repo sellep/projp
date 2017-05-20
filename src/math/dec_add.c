@@ -30,7 +30,7 @@ void dec_add(dec * const c, dec const * const a, dec const * const b)
 		return;
 	}
 
-	if (dec_ucmp(a, b) == BELOW)
+	if (dec_ucmp(a, b) == ABOVE)
 	{
 		dec_usub(c, a, b);
 		MKNEG(c);
