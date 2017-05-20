@@ -6,37 +6,37 @@ void dec_sub(dec * const c, dec const * const a, dec const * const b)
 	{
 		if (ISPOS(b))
 		{
-			dec_radd(c, a, b);
+			dec_uadd(c, a, b);
 			MKNEG(c);
 			return;
 		}
 
-		if (dec_cmp(a, b) == ABOVE)
+		if (dec_ucmp(a, b) == ABOVE)
 		{
-			dec_rsub(c, a, b);
+			dec_usub(c, a, b);
 			MKNEG(c);
 			return;
 		}
 
-		dec_rsub(c, b, a);
+		dec_usub(c, b, a);
 		MKPOS(c);
 		return;
 	}
 
 	if (ISNEG(b))
 	{
-		dec_radd(c, a, b);
+		dec_uadd(c, a, b);
 		MKPOS(c);
 		return;
 	}
 
-	if (dec_cmp(a, b) == BELOW)
+	if (dec_ucmp(a, b) == BELOW)
 	{
-		dec_rsub(c, b, a);
+		dec_usub(c, b, a);
 		MKNEG(c);
 		return;
 	}
 
-	dec_rsub(c, a, b);
+	dec_usub(c, a, b);
 	MKPOS(c);
 }

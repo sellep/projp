@@ -36,10 +36,12 @@ typedef uint CARRY;
 
 void dec_print(dec const * const);
 void dec_rand(dec * const);
+inline void dec_cpy(dec * const, dec const * const);
+inline int dec_ucmp(dec const * const, dec const * const);
 inline int dec_cmp(dec const * const, dec const * const);
 inline void dec_add(dec * const, dec const * const, dec const * const);
 inline void dec_sub(dec * const, dec const * const, dec const * const);
-inline void dec_radd(dec * const, dec const * const, dec const * const);
-inline void dec_rsub(dec * const, dec const * const, dec const * const);
+inline void dec_uadd(dec * const, dec const * const, dec const * const);
+inline void dec_usub(dec * const, dec const * const, dec const * const);
 
 #endif
