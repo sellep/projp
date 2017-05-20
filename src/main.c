@@ -1,15 +1,16 @@
 #include "defs.h"
 #include "math/dec.h"
 
+#include <stdlib.h>
 #include <stdio.h>
 
 int main()
 {
-	dec a, b;
-	dec_print(&a);
-	dec_print(&b);
+	srand(time(NULL));
 
-	printf("\n%i\n", dec_cmp(&a, &b));
+	dec a;
+	dec_rand(&a);
+	dec_print(&a);
 
 	return 0;
 }

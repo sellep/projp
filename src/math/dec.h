@@ -35,6 +35,7 @@ typedef uint CARRY;
 #define MKNEG(d)(d->sign = NEGATIVE)
 
 void dec_print(dec const * const);
+void dec_rand(dec * const);
 inline int dec_cmp(dec const * const, dec const * const);
 inline void dec_add(dec * const, dec const * const, dec const * const);
 inline void dec_sub(dec * const, dec const * const, dec const * const);
