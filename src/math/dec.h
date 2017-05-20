@@ -28,11 +28,11 @@ typedef uint CARRY;
 
 #define POSITIVE 1
 #define NEGATIVE 0
-#define ISPOS(d)(d->sign)
-#define ISNEG(d)(d->sign == NEGATIVE)
-#define NEG(d)(d->sign = 1 - d->sign)
-#define MKPOS(d)(d->sign = POSITIVE)
-#define MKNEG(d)(d->sign = NEGATIVE)
+#define ISPOS(d)((d)->sign)
+#define ISNEG(d)((d)->sign == NEGATIVE)
+#define NEG(d)((d)->sign = 1 - d->sign)
+#define MKPOS(d)((d)->sign = POSITIVE)
+#define MKNEG(d)((d)->sign = NEGATIVE)
 
 void dec_print(dec const * const);
 void dec_rand(dec * const);
