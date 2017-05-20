@@ -3,7 +3,7 @@ CFLAGS=-v -march=haswell -fomit-frame-pointer -O2 -pipe
 
 HEAD=defs.h math/dec.h
 OBJ=dec_print.o dec_ucmp.o dec_cmp.o dec_cpy.o dec_add.o dec_sub.o dec_uadd.o dec_usub.o dec_rand.o watch.o
-TEST=main.o dec_add_zero.o dec_uadd_commutative.o dec_add_commutative.o
+TEST=main.o dec_add_zero.o dec_uadd_commutative.o dec_add_commutative.o dec_sub_zero.o
 
 %.o:src/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
