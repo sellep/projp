@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-void dec_mul(dec * const c, dec const * const a, dec const * const b)
+void dec_mul(dec * const c, dec * const a, dec * const b)
 {
 	uint r[2 * (DEC_LEN + 1)];
 	ushort asign;

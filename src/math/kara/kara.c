@@ -4,7 +4,7 @@
 
 extern inline void kara_mul(uint * const, uint const * const, uint const * const, uint const);
 
-void kara(dec * const c, dec const * const a, dec const * const b)
+void kara(dec * const c, dec * const a, dec * const b)
 {
 	uint r[2 * (DEC_LEN + 1)];
 	uint asign;

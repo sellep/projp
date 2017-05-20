@@ -1,6 +1,6 @@
 #include "dec.h"
 
-uint dec_uadd2i(dec const * const a, dec const * const b)
+ushort dec_uadd2i(dec const * const a, dec const * const b)
 {
 	int i;
 	CARRY carry = 0;

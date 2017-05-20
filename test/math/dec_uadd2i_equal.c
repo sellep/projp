@@ -11,9 +11,6 @@ int dec_uadd2i_equal()
 	winit(&wuadd);
 	winit(&wall);
 
-	memset(&d, 0, sizeof(dec));
-	MKPOS(&d);
-
 	wstart(wall);
 
 	uint i;
@@ -23,11 +20,11 @@ int dec_uadd2i_equal()
 		dec_rand(&b);
 
 		wstart(wuadd2i);
-		intg = dec_uadd2i(a, b);
+		intg = dec_uadd2i(&a, &b);
 		wstop(wuadd2i);
 
 		wstart(wuadd);
-		dec_uadd(c, a, b);
+		dec_uadd(&c, &a, &b);
 		wstop(wuadd);
 
 		if (intg != c.intg)

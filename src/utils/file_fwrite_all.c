@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int fwrite(void const * const buf, uint len, char const * const fname)
+int fwrite_all(void const * const buf, uint len, char const * const fname)
 {
 	FILE *fptr;
 	char *fbuf;

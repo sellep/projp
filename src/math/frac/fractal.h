@@ -5,6 +5,7 @@
 
 #define FRAC_THRESHOLD 4
 
-void mandelbrot(uint * const, uint const, uint const, uint const, dec const * const, dec const * const, dec const * const, dec const * const);
+//void mandelbrot(uint * const, uint const, uint const, uint const, dec const * const, dec const * const, dec const * const, dec const * 
+//const);
 
 #endif

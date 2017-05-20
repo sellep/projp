@@ -1,5 +1,5 @@
 CC=@gcc
-CFLAGS=-Wall -Werror -v -march=haswell -fomit-frame-pointer -O3 -pipe
+CFLAGS=-Wall -v -march=haswell -fomit-frame-pointer -O3 -pipe
 
 OBJ=watch.o \
 	file_fsize.o \
@@ -61,6 +61,9 @@ TST=dec_uadd_commutative.o \
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
 %.o : test/math/%.c
+	$(CC) $(CFLAGS) -o obj/$@ -c $<
+
+%.o : test/math/kara/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
 all: clean $(OBJ)

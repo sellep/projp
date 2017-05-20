@@ -2,6 +2,7 @@
 
 #include "string.h"
 
+//b is -0, fix!
 int dec_mul_zero()
 {
 	dec a, b, c;
@@ -53,8 +54,6 @@ int dec_mul_zero()
 		dec_print(&b);
 		printf("\nc: ");
 		dec_print(&c);
-		printf("\nd: ");
-		dec_print(&d);
 		printf("\n");
 	}
 

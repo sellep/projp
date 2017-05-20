@@ -2,15 +2,15 @@
 
 void dec_imul(dec * const c, dec const * const a, uint const i)
 {
-	int i;
+	int j;
 	ulong tmp;
 	CARRY carry = 0;
 
-	for (i = DEC_LEN - 1; i >= 0; i--)
+	for (j = DEC_LEN - 1; j >= 0; j--)
 	{
-		tmp = (ulong)a->decs[i] * i + carry;
+		tmp = (ulong)a->decs[j] * i + carry;
 		carry = OVERFLOW(tmp);
-		c->decs[i] = VALUE(tmp);
+		c->decs[j] = VALUE(tmp);
 	}
 
 	c->intg = a->intg * i + carry;

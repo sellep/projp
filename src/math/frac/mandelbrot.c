@@ -2,9 +2,10 @@
 
 #define IDX(x,y,w)(w*y+x)
 
-void mandelbrot(uint * const iframe, uint const iterations, uint const width, uint const height, dec const * const x0, dec const * const y0, complex const * const delta)
-{
-	uint x;
+//void mandelbrot(uint * const iframe, uint const iterations, uint const width, uint const height, dec const * const x0, dec const * 
+//const y0, complex const * const delta)
+//{
+/*	uint x;
 	uint y;
 	uint i;
 
@@ -37,12 +38,13 @@ void mandelbrot(uint * const iframe, uint const iterations, uint const width, ui
 				zr2 = zr * zr - zi * zi;
 				zi2 = 2 * zr * zi;
 				*/
-
+/*
 				i++;
 			}
 			while (i < iterations && dec_uadd2i(&zr2, &zi2) < FRAC_THRESHOLD);
-			
+
 			iframe[IDX(x, y, width)] = i;
 		}
-	}
-}
+
+	}*/
+//}

@@ -14,7 +14,7 @@ long fread_all(void * * const buf, char const * const fname)
 	fptr = fopen(fname, "rb");
 
 	if (!fptr)
-		return FOPEN_ERROR;
+		return FOPEN_FAILED;
 
 	size = fsize(fptr);
 	buf[0] = malloc(size);
