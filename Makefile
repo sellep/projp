@@ -2,8 +2,24 @@ CC=@gcc
 CFLAGS=-v -march=haswell -fomit-frame-pointer -O2 -pipe
 
 HEAD=defs.h math/dec.h
-OBJ=dec_print.o dec_ucmp.o dec_cmp.o dec_cpy.o dec_add.o dec_sub.o dec_uadd.o dec_usub.o dec_rand.o watch.o
-TEST=main.o dec_add_zero.o dec_uadd_commutative.o dec_add_commutative.o dec_sub_zero.o
+OBJ= \
+	dec_print.o \
+	dec_ucmp.o \
+	dec_cmp.o \
+	dec_cpy.o \
+	dec_uadd.o \
+	dec_add.o \
+	dec_usub.o \
+	dec_sub.o \
+	dec_rand.o \
+	watch.o
+TEST= \
+	dec_uadd_commutative.o \
+	dec_add_zero.o \
+	dec_add_commutative.o \
+	dec_sub_zero.o \
+	dec_sub_commutative.o \
+	main.o
 
 %.o:src/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<

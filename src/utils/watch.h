@@ -3,10 +3,12 @@
 
 typedef struct
 {
-	double time;
+	ulong time;
 } watch;
 
+void winit(watch * * const);
 void wstart(watch * const);
 void wstop(watch * const);
+void wfree(watch const * const);
 
 #endif

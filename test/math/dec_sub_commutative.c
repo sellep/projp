@@ -1,13 +1,15 @@
 #include "../test.h"
 
-int dec_uadd_commutative(uint iter)
+#include "string.h"
+
+int dec_sub_commutative(uint iter)
 {
 	dec a, b, c, d;
 
-	watch *wadd, *wcmp, *wall;
+	watch *wsub, *wcmp, *wall;
 	int cmp;
 
-	winit(&wadd);
+	winit(&wsub);
 	winit(&wcmp);
 	winit(&wall);
 
@@ -19,19 +21,16 @@ int dec_uadd_commutative(uint iter)
 		dec_rand(&a);
 		dec_rand(&b);
 
-		MKPOS(&a);
-		MKPOS(&b);
+		wstart(wsub);
 
-		wstart(wadd);
+		dec_sub(&c, &a, &b);
+		dec_sub(&d, &a, &c),
 
-		dec_uadd(&c, &a, &b);
-		dec_uadd(&d, &b, &a);
-
-		wstop(wadd);
+		wstop(wsub);
 
 		wstart(wcmp);
 
-		cmp = dec_cmp(&c, &d);
+		cmp = dec_cmp(&b, &d);
 
 		wstop(wcmp);
 
@@ -45,7 +44,7 @@ int dec_uadd_commutative(uint iter)
 	{
 		printf("success\n");
 		printf("overall time %u, average %f\n", wall->time, (double) wall->time / iter);
-		printf("overall add time %u, average %f\n", wadd->time, (double) wadd->time / iter);
+		printf("overall sub time %u, average %f\n", wsub->time, (double) wsub->time / iter);
 		printf("overall cmp time %u, average %f\n", wcmp->time, (double) wcmp->time / iter);
 	}
 	else
@@ -62,7 +61,7 @@ int dec_uadd_commutative(uint iter)
 		printf("\n");
 	}
 
-	wfree(wadd);
+	wfree(wsub);
 	wfree(wcmp);
 	wfree(wall);
 

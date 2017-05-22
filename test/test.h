@@ -10,4 +10,10 @@
 
 #include <stdio.h>
 
+int dec_add_zero(uint const);
+int dec_uadd_commutative(uint const);
+int dec_add_commutative(uint const);
+int dec_sub_zero(uint const);
+int dec_sub_commutative(uint const);
+
 #endif
