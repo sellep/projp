@@ -58,8 +58,7 @@ test: all $(TEST)
 	$(CC) $(CFLAGS) -o bin/test $(addprefix obj/, $(TEST)) -Llib -lproip
 
 clean:
-	@mkdir -p bin obj lib include
-	@rm -rf include/*
+	@mkdir -p bin obj lib
 	@rm -rf bin/*
 	@rm -rf obj/*
 	@rm -rf lib/*
