@@ -1,0 +1,51 @@
+ public static uint[,] compute(double x0, double x1, double y0, double y1, uint width, uint height, uint iterations)
+        {
+            uint[,] iframe = new uint[width, height];
+
+            double dx = (x1 - x0) / width;
+            double dy = (y1 - y0) / height;
+
+            uint x;
+            uint y;
+            uint i;
+
+            double cr;
+            double ci;
+            double zr;
+            double zi;
+            double zr2;
+            double zi2;
+            double tmp;
+
+            for (y = 0; y < height; y++)
+            {
+                for (x = 0; x < width; x++)
+                {
+                    cr = x * dx;
+                    ci = y * dy;
+                    zr = 0;
+                    zi = 0;
+                    i = uint.MaxValue;
+
+                    do
+                    {
+                        zr2 = zr * zr;
+                        zi2 = zi * zi;
+
+                        tmp = zr * zi;
+                        zi = 2 * tmp;
+                        zr = zr2 - zi2;
+
+                        zr = zr + cr;
+                        zi = zi + ci;
+
+                        i++;
+                    }
+                    while (i < iterations && zr2 + zi2 < _THRESHOLD);
+
+                    iframe[x, y] = i;
+                }
+            }
+
+            return iframe;
+        }
