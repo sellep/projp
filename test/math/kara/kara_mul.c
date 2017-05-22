@@ -1,20 +1,16 @@
 #include "../test.h"
 
-#include "string.h"
-
-int dec_sub_zero()
+int kara_mul()
 {
 	dec a, b, c, d;
 
-	watch *wsub, *wcmp, *wall;
+	watch *wkara, *wmul, *wcmp, *wall;
 	int cmp;
 
-	winit(&wsub);
+	winit(&wkara);
+	winit(&wmul);
 	winit(&wcmp);
 	winit(&wall);
-
-	memset(&d, 0, sizeof(dec));
-	MKPOS(&d);
 
 	wstart(wall);
 
@@ -22,11 +18,15 @@ int dec_sub_zero()
 	for (i = 0; i < ITERATIONS; i++)
 	{
 		dec_rand(&a);
-		dec_cpy(&b, &a);
+		dec_rand(&b);
 
-		wstart(wsub);
-		dec_sub(&c, &a, &b);
-		wstop(wsub);
+		wstart(wkara);
+		kara(&c, &a, &b);
+		wstop(wkara);
+
+		wstart(wmul);
+		dec_mul(&d, &a, &b);
+		wstop(wmul);
 
 		wstart(wcmp);
 		cmp = dec_cmp(&c, &d);
@@ -42,7 +42,8 @@ int dec_sub_zero()
 	{
 		printf("success\n");
 		printf("overall time %u, average %f\n", wall->time, (double) wall->time / ITERATIONS);
-		printf("overall sub time %u, average %f\n", wsub->time, (double) wsub->time / ITERATIONS);
+		printf("overall kara time %u, average %f\n", wkara->time, (double) wkara->time / ITERATIONS);
+		printf("overall mul time %u, average %f\n", wmul->time, (double) wmul->time / ITERATIONS);
 		printf("overall cmp time %u, average %f\n", wcmp->time, (double) wcmp->time / ITERATIONS);
 	}
 	else
@@ -59,7 +60,8 @@ int dec_sub_zero()
 		printf("\n");
 	}
 
-	wfree(wsub);
+	wfree(wkara);
+	wfree(wmul);
 	wfree(wcmp);
 	wfree(wall);
 

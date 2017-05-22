@@ -2,7 +2,7 @@
 
 #include "string.h"
 
-int dec_sub_commutative(uint iter)
+int dec_sub_commutative()
 {
 	dec a, b, c, d;
 
@@ -16,22 +16,18 @@ int dec_sub_commutative(uint iter)
 	wstart(wall);
 
 	uint i;
-	for (i = 0; i < iter; i++)
+	for (i = 0; i < ITERATIONS; i++)
 	{
 		dec_rand(&a);
 		dec_rand(&b);
 
 		wstart(wsub);
-
 		dec_sub(&c, &a, &b);
-		dec_sub(&d, &a, &c),
-
+		dec_sub(&d, &a, &c);
 		wstop(wsub);
 
 		wstart(wcmp);
-
 		cmp = dec_cmp(&b, &d);
-
 		wstop(wcmp);
 
 		if (cmp != EQUAL)
@@ -40,12 +36,12 @@ int dec_sub_commutative(uint iter)
 
 	wstop(wall);
 
-	if (i == iter)
+	if (i == ITERATIONS)
 	{
 		printf("success\n");
-		printf("overall time %u, average %f\n", wall->time, (double) wall->time / iter);
-		printf("overall sub time %u, average %f\n", wsub->time, (double) wsub->time / iter);
-		printf("overall cmp time %u, average %f\n", wcmp->time, (double) wcmp->time / iter);
+		printf("overall time %u, average %f\n", wall->time, (double) wall->time / ITERATIONS);
+		printf("overall sub time %u, average %f\n", wsub->time, (double) wsub->time / ITERATIONS);
+		printf("overall cmp time %u, average %f\n", wcmp->time, (double) wcmp->time / ITERATIONS);
 	}
 	else
 	{
@@ -65,5 +61,5 @@ int dec_sub_commutative(uint iter)
 	wfree(wcmp);
 	wfree(wall);
 
-	return i == iter ? SUCCESS : FAILURE;
+	return i == ITERATIONS ? SUCCESS : FAILURE;
 }

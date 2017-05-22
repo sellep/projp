@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-void dec_umul(uint * const c, uint const * const a, uint const * const b)
+void dec_umul(uint * const c, uint const * const a, uint const * const b, uint const len)
 {
 	int i, j;
 	ulong tmp;

@@ -3,8 +3,6 @@
 
 #include <stdlib.h>
 
-#define ITERATIONS 100000
-
 int main()
 {
 	srand(time(NULL));
@@ -12,25 +10,28 @@ int main()
 	int tres;
 
 	printf("dec_uadd_commutative ");
-	tres = dec_uadd_commutative(ITERATIONS);
+	tres = dec_uadd_commutative();
 
 	printf("dec_add_zero ");
-	tres = dec_add_zero(ITERATIONS);
+	tres = dec_add_zero();
 
 	printf("dec_add_commutative ");
-	tres = dec_add_commutative(ITERATIONS);
+	tres = dec_add_commutative();
 
 	printf("dec_sub_zero ");
-	tres = dec_sub_zero(ITERATIONS);
+	tres = dec_sub_zero();
 
 	printf("dec_sub_commutative ");
-	tres = dec_sub_commutative(ITERATIONS);
+	tres = dec_sub_commutative();
 
 	printf("dec_mul_zero ");
-	tres = dec_mul_zero(ITERATIONS);
+	tres = dec_mul_zero();
 
 	printf("dec_mul_commutative ");
-	tres = dec_mul_commutative(ITERATIONS);
+	tres = dec_mul_commutative();
+
+	printf("kara_mul ");
+	tres = kara_mul();
 
 	return tres;
 }

@@ -45,7 +45,7 @@ inline void dec_sub(dec * const, dec const * const, dec const * const);
 inline void dec_uadd(dec * const, dec const * const, dec const * const);
 inline void dec_usub(dec * const, dec const * const, dec const * const);
 
-inline void dec_umul(uint * const, uint const * const, uint const * const);
+inline void dec_umul(uint * const, uint const * const, uint const * const, uint const);
 inline void dec_mul(dec * const, dec const * const, dec const * const);
 
 #endif

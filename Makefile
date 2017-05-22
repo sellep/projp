@@ -1,9 +1,7 @@
 CC=@gcc
-CFLAGS=-v -march=haswell -fomit-frame-pointer -O2 -pipe
+CFLAGS=-v -march=haswell -fomit-frame-pointer -O3 -pipe
 
-HEAD=defs.h math/dec.h
-OBJ= \
-	watch.o
+OBJ=watch.o \
 	dec_rand.o \
 	dec_print.o \
 	dec_ucmp.o \
@@ -15,7 +13,12 @@ OBJ= \
 	dec_usub.o \
 	dec_sub.o \
 	dec_umul.o \
-	dec_mul.o
+	dec_mul.o \
+	kara_combine.o \
+	kara_sub.o \
+	kara_add.o \
+	kara_mul.o \
+	kara.o
 
 TEST= \
 	dec_uadd_commutative.o \
@@ -25,27 +28,27 @@ TEST= \
 	dec_sub_commutative.o \
 	dec_mul_zero.o \
 	dec_mul_commutative.o \
-	main.o
+	test.o
 
-%.o:src/%.c
+%.o : src/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
-%.o:src/math/%.c
+%.o : src/utils/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
-%.o:src/utils/%.c
+%.o : src/math/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
-%.o:test/%.c
+%.o : src/math/kara/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
-%.o:test/math/%.c
+%.o : test/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
-%h:
-	cp src/$@ include/
+%.o : test/math/%.c
+	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
-all: clean $(OBJ) $(HEAD)
+all: clean $(OBJ)
 	ar rvs lib/libproip.a $(addprefix obj/, $(OBJ))
 
 test: all $(TEST)

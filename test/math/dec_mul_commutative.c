@@ -1,6 +1,6 @@
 #include "../test.h"
 
-int dec_mul_commutative(uint iter)
+int dec_mul_commutative()
 {
 	dec a, b, c, d;
 
@@ -14,22 +14,18 @@ int dec_mul_commutative(uint iter)
 	wstart(wall);
 
 	uint i;
-	for (i = 0; i < iter; i++)
+	for (i = 0; i < ITERATIONS; i++)
 	{
 		dec_rand(&a);
 		dec_rand(&b);
 
 		wstart(wmul);
-
 		dec_mul(&c, &a, &b);
 		dec_mul(&d, &b, &a);
-
 		wstop(wmul);
 
 		wstart(wcmp);
-
 		cmp = dec_cmp(&c, &d);
-
 		wstop(wcmp);
 
 		if (cmp != EQUAL)
@@ -38,12 +34,12 @@ int dec_mul_commutative(uint iter)
 
 	wstop(wall);
 
-	if (i == iter)
+	if (i == ITERATIONS)
 	{
 		printf("success\n");
-		printf("overall time %u, average %f\n", wall->time, (double) wall->time / iter);
-		printf("overall mul time %u, average %f\n", wmul->time, (double) wmul->time / iter);
-		printf("overall cmp time %u, average %f\n", wcmp->time, (double) wcmp->time / iter);
+		printf("overall time %u, average %f\n", wall->time, (double) wall->time / ITERATIONS);
+		printf("overall mul time %u, average %f\n", wmul->time, (double) wmul->time / ITERATIONS);
+		printf("overall cmp time %u, average %f\n", wcmp->time, (double) wcmp->time / ITERATIONS);
 	}
 	else
 	{
@@ -63,5 +59,5 @@ int dec_mul_commutative(uint iter)
 	wfree(wcmp);
 	wfree(wall);
 
-	return i == iter ? SUCCESS : FAILURE;
+	return i == ITERATIONS ? SUCCESS : FAILURE;
 }
