@@ -23,8 +23,7 @@ OBJ=watch.o \
 	fast_kara_mul.o \
 	fast_kara.o
 
-TEST= \
-	dec_uadd_commutative.o \
+TST=dec_uadd_commutative.o \
 	dec_add_zero.o \
 	dec_add_commutative.o \
 	dec_sub_zero.o \
@@ -54,8 +53,8 @@ TEST= \
 all: clean $(OBJ)
 	ar rvs lib/libproip.a $(addprefix obj/, $(OBJ))
 
-test: all $(TEST)
-	$(CC) $(CFLAGS) -o bin/test $(addprefix obj/, $(TEST)) -Llib -lproip
+test: all $(TST)
+	$(CC) $(CFLAGS) -o bin/test $(addprefix obj/, $(TST)) -Llib -lproip
 
 clean:
 	@mkdir -p bin obj lib
