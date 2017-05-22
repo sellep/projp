@@ -23,7 +23,8 @@ OBJ=watch.o \
 	kara.o \
 	fast_kara_sub.o \
 	fast_kara_mul.o \
-	fast_kara.o
+	fast_kara.o \
+	mandelbrot.o
 
 TST=dec_uadd_commutative.o \
 	dec_add_zero.o \
@@ -47,6 +48,9 @@ TST=dec_uadd_commutative.o \
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
 %.o : src/math/kara/%.c
+	$(CC) $(CFLAGS) -o obj/$@ -c $<
+
+%.o : src/math/frac/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
 %.o : test/%.c
