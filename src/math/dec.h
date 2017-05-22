@@ -41,6 +41,7 @@ inline void dec_cpy(dec * const, dec const * const);
 inline int dec_ucmp(dec const * const, dec const * const);
 inline int dec_cmp(dec const * const, dec const * const);
 inline void dec_add(dec * const, dec const * const, dec const * const);
+inline uint dec_uadd2i(dec const * const, dec const * const);
 inline void dec_sub(dec * const, dec const * const, dec const * const);
 inline void dec_uadd(dec * const, dec const * const, dec const * const);
 inline void dec_usub(dec * const, dec const * const, dec const * const);

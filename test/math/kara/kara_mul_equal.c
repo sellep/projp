@@ -1,6 +1,6 @@
 #include "../test.h"
 
-int kara_mul()
+int kara_mul_equal()
 {
 	dec a, b, c, d;
 

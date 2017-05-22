@@ -29,8 +29,11 @@ int main()
 	printf("dec_mul_commutative ");
 	tres = dec_mul_commutative();
 
-	printf("kara_mul ");
-	tres = kara_mul();
+	printf("dec_uadd2i_equal ");
+	tres = dec_uadd2i_equal();
+
+	printf("kara_mul_equal ");
+	tres = kara_mul_equal();
 
 	printf("kara_perf ");
 	tres = kara_perf();

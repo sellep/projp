@@ -10,10 +10,12 @@ OBJ=watch.o \
 	dec_iszero.o \
 	dec_uadd.o \
 	dec_add.o \
+	dec_uadd2i.o \
 	dec_usub.o \
 	dec_sub.o \
 	dec_umul.o \
 	dec_mul.o \
+	dec_imul.o \
 	kara_combine.o \
 	kara_sub.o \
 	kara_add.o \
@@ -30,6 +32,9 @@ TST=dec_uadd_commutative.o \
 	dec_sub_commutative.o \
 	dec_mul_zero.o \
 	dec_mul_commutative.o \
+	dec_uadd2i_equal.o \
+	kara_mul_equal.o \
+	kara_perf.o \
 	test.o
 
 %.o : src/%.c
