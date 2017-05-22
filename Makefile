@@ -5,6 +5,7 @@ OBJ=watch.o \
 	file_fsize.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
+	dec_zero.o \
 	dec_rand.o \
 	dec_print.o \
 	dec_ucmp.o \

@@ -34,6 +34,7 @@ typedef uint CARRY;
 #define MKPOS(d)((d)->sign = POSITIVE)
 #define MKNEG(d)((d)->sign = NEGATIVE)
 
+inline void dec_zero(dec * const);
 void dec_print(dec const * const);
 void dec_rand(dec * const);
 inline BOOL dec_iszero(dec const * const);
