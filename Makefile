@@ -2,6 +2,9 @@ CC=@gcc
 CFLAGS=-Wall -Werror -v -march=haswell -fomit-frame-pointer -O3 -pipe
 
 OBJ=watch.o \
+	file_fsize.o \
+	file_fwrite_all.o \
+	file_fread_all.o \
 	dec_rand.o \
 	dec_print.o \
 	dec_ucmp.o \
