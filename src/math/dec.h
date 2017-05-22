@@ -36,6 +36,7 @@ typedef uint CARRY;
 
 void dec_print(dec const * const);
 void dec_rand(dec * const);
+inline BOOL dec_iszero(dec const * const);
 inline void dec_cpy(dec * const, dec const * const);
 inline int dec_ucmp(dec const * const, dec const * const);
 inline int dec_cmp(dec const * const, dec const * const);

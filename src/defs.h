@@ -7,4 +7,6 @@
 #define uint uint32_t
 #define ulong uint64_t
 
+#define BOOL int
+
 #endif

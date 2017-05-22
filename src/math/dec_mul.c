@@ -27,7 +27,11 @@ void dec_mul(dec * const c, dec const * const a, dec const * const b)
 
 	dec_umul((uint*) c, (uint*) a, (uint*) b);
 
-	if (asign != bsign)
+	if (dec_iszero(c))
+	{
+		MKPOS(c);
+	}
+	else if (asign != bsign)
 	{
 		MKNEG(c);
 	}

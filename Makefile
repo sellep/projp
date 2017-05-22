@@ -9,6 +9,7 @@ OBJ= \
 	dec_ucmp.o \
 	dec_cmp.o \
 	dec_cpy.o \
+	dec_iszero.o \
 	dec_uadd.o \
 	dec_add.o \
 	dec_usub.o \
