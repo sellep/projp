@@ -1,5 +1,5 @@
 CC=@gcc
-CFLAGS=-v -march=haswell -fomit-frame-pointer -O3 -pipe
+CFLAGS=-Wall -Werror -v -march=haswell -fomit-frame-pointer -O3 -pipe
 
 OBJ=watch.o \
 	dec_rand.o \
@@ -18,7 +18,10 @@ OBJ=watch.o \
 	kara_sub.o \
 	kara_add.o \
 	kara_mul.o \
-	kara.o
+	kara.o \
+	fast_kara_sub.o \
+	fast_kara_mul.o \
+	fast_kara.o
 
 TEST= \
 	dec_uadd_commutative.o \
