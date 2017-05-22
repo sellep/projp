@@ -21,5 +21,6 @@ int dec_sub_commutative();
 int dec_mul_zero();
 int dec_mul_commutative();
 int kara_mul();
+int kara_perf();
 
 #endif

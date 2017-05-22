@@ -1,4 +1,3 @@
-
 #include "test.h"
 
 #include <stdlib.h>
@@ -32,6 +31,9 @@ int main()
 
 	printf("kara_mul ");
 	tres = kara_mul();
+
+	printf("kara_perf ");
+	tres = kara_perf();
 
 	return tres;
 }
