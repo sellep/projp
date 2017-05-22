@@ -26,5 +26,11 @@ int main()
 	printf("dec_sub_commutative ");
 	tres = dec_sub_commutative(ITERATIONS);
 
+	printf("dec_mul_zero ");
+	tres = dec_mul_zero(ITERATIONS);
+
+	printf("dec_mul_commutative ");
+	tres = dec_mul_commutative(ITERATIONS);
+
 	return tres;
 }

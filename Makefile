@@ -22,6 +22,8 @@ TEST= \
 	dec_add_commutative.o \
 	dec_sub_zero.o \
 	dec_sub_commutative.o \
+	dec_mul_zero.o \
+	dec_mul_commutative.o \
 	main.o
 
 %.o:src/%.c

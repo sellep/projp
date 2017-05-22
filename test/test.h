@@ -15,5 +15,7 @@ int dec_uadd_commutative(uint const);
 int dec_add_commutative(uint const);
 int dec_sub_zero(uint const);
 int dec_sub_commutative(uint const);
+int dec_mul_zero(uint const);
+int dec_mul_commutative(uint const);
 
 #endif
