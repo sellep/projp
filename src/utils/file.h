@@ -3,16 +3,18 @@
 
 #include "../defs.h"
 
-#define TERMINATING_NULL '\0'
+#define NULL_TERM '\0'
 
 enum file_errors
 {
-	OK = 0,
+	FOK = 0,
 	FOPEN_FAILED = -1,
 	FCLOSE_FAILED = -2,
 };
 
+BOOL fexists(char const * const);
 int fwrite_all(void const * const, uint const, char const * const);
 long fread_all(void * * const, char const * const);
+BOOL fnext(char * * const, char const * const);
 
 #endif

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern inline long fsize(FILE * const);
+extern long fsize(FILE * const);
 
 long fread_all(void * * const buf, char const * const fname)
 {

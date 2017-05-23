@@ -3,6 +3,8 @@ CFLAGS=-Wall -v -march=haswell -fomit-frame-pointer -O3 -pipe
 
 OBJ=watch.o \
 	file_fsize.o \
+	file_fexists.o \
+	file_fnext.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
 	dec_zero.o \
@@ -28,6 +30,7 @@ OBJ=watch.o \
 	fast_kara_sub.o \
 	fast_kara_mul.o \
 	fast_kara.o \
+	iframe_writenext.o \
 	mandelbrot.o
 
 TST=dec_uadd_commutative.o \

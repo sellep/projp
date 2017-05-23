@@ -15,7 +15,7 @@ int fwrite_all(void const * const buf, uint len, char const * const fname)
 
 	fbuf = (char*) malloc(len + 1);
 	memcpy(fbuf, buf, len);
-	fbuf[len] = TERMINATING_NULL;
+	fbuf[len] = NULL_TERM;
 
 	fputs(fbuf, fptr);
 

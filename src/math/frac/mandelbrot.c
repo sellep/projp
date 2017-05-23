@@ -2,10 +2,9 @@
 
 #define IDX(x,y,w)(w*y+x)
 
-//void mandelbrot(uint * const iframe, uint const iterations, uint const width, uint const height, dec const * const x0, dec const * 
-//const y0, complex const * const delta)
-//{
-/*	uint x;
+void mandelbrot(iframe const * const req, dec const * const x0, dec const * const y0, complex const * const delta)
+{
+	uint x;
 	uint y;
 	uint i;
 
@@ -14,11 +13,12 @@
 	dec *ci = d + 1;
 	dec *zr = d + 2;
 	dec *zi = d + 3;
-	dec *;
+	dec *zr2 = d + 4;
+	dec *zi2 = d + 5;
 
-	for (y = 0; y < height; y++)
+	for (y = 0; y < req->height; y++)
 	{
-		for (x = 0; x < width; x++)
+		for (x = 0; x < req->width; x++)
 		{
 			dec_imul(cr, dx, x);
 			dec_add(cr, x0, cr);
@@ -27,24 +27,30 @@
 
 			i = VALUE_MAX;
 
-			//set z and z2 to 0?
+			memset(zr2, 0, 2 * sizeof(dec));
 
 			do
 			{
-				/*
-				zr = zr2 + cr;
-				zi = zi2 + ci;
+				//zr = zr2 + cr;
+				dec_add(zr, zr2, cr);
 
-				zr2 = zr * zr - zi * zi;
-				zi2 = 2 * zr * zi;
-				*/
-/*
+				//zi = zi2 + ci;
+				dec_add(zi, zi2, ci);
+
+				//zi2 = 2 * zr * zi;
+				dec_mul(zi2, zr, zi);
+				dec_imul(zi2, zi2, 2);
+
+				//zr2 = zr * zr - zi * zi;
+				dec_mul(zr2, zr, zr);
+				dec_mul(zr, zi, zi);
+
 				i++;
 			}
-			while (i < iterations && dec_uadd2i(&zr2, &zi2) < FRAC_THRESHOLD);
+			while (i < req->iterations && dec_uadd2i(&zr2, &zi2) < FRAC_THRESHOLD);
 
-			iframe[IDX(x, y, width)] = i;
+			req->frame[IDX(x, y, width)] = i;
 		}
 
-	}*/
-//}
+	}
+}

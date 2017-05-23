@@ -9,6 +9,6 @@ typedef struct
 	dec i;
 } complex;
 
-void complex_square(complex * const, complex const * complex);
+void complex_squarediff(dec * const, complex const * const);
 
 #endif
