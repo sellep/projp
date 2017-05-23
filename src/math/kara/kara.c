@@ -12,38 +12,51 @@ void kara(dec * const c, dec * const a, dec * const b)
 
 	if (ISPOS(a))
 	{
-		MKNEG(a);
 		asign = POSITIVE;
 	}
 	else
 	{
+		MKPOS(a);
 		asign = NEGATIVE;
 	}
 
 	if (ISPOS(b))
 	{
-		MKNEG(b);
 		bsign = POSITIVE;
 	}
 	else
 	{
+		MKPOS(b);
 		bsign = NEGATIVE;
 	}
 
 	kara_mul(r, a, b, DEC_LEN + 1);
 
 	memcpy(c, r, sizeof(dec));
-	
-	if (dec_iszero(c))
+
+	if (asign == POSITIVE)
 	{
-		MKPOS(c);
-	}
-	else if (asign != bsign)
-	{
-		MKNEG(c);
+		if (bsign == NEGATIVE)
+		{
+			MKNEG(b);
+
+			if (!dec_iszero(c))
+			{
+				MKNEG(c);
+			}
+		}
 	}
 	else
 	{
-		MKPOS(c);
+		MKNEG(a);
+
+		if (bsign == NEGATIVE)
+		{
+			MKNEG(b);
+		}
+		else if (!dec_iszero(c))
+		{
+			MKNEG(c);
+		}
 	}
 }
