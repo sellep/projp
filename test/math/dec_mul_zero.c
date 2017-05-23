@@ -2,7 +2,6 @@
 
 #include "string.h"
 
-//b is -0, fix!
 int dec_mul_zero()
 {
 	dec a, b, c;

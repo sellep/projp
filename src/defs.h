@@ -8,5 +8,7 @@
 #define ulong uint64_t
 
 #define BOOL int
+#define true 1
+#define false 0
 
 #endif
