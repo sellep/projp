@@ -10,6 +10,7 @@ OBJ=watch.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
 	project_exists.o \
+	project_create.o \
 	palette_ipol.o \
 	palette_init.o \
 	palette_free.o \
