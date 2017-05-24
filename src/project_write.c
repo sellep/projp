@@ -40,10 +40,16 @@ BOOL project_create(project const * const p, char const * const path)
 
 	sprintf(f, "width=%u\n", p->width);
 	sprintf(f, "height=%u\n", p->height);
-	sprintf(f, "iterations=%u\n", p->iterations);
+	sprintf(f, "iterations=%u", p->iterations);
 
-	//tar_r
-	//tar_i
+	//in debug mode, target not available while creation
+	if (p->tar_r != NULL && p->tar_i != NULL)
+	{
+		sprintf(f, "\ntar_r=");
+		dec_sprint(f, &p->tar_r);
+		sprintf(f, "\ntar_i=");
+		dec_sprint(f, &p->tar_i);
+	}
 
 	fclose(f);
 	return TRUE;
