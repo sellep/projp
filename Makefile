@@ -2,11 +2,14 @@ CC=@gcc
 CFLAGS=-Wall -v -march=haswell -fomit-frame-pointer -O3 -pipe
 
 OBJ=watch.o \
+	file_path_combine.o \
 	file_fsize.o \
 	file_fexists.o \
+	file_dexists.o \
 	file_fnext.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
+	project_exists.o \
 	palette_ipol.o \
 	palette_init.o \
 	palette_free.o \
