@@ -13,8 +13,7 @@ typedef struct
 	uint width;
 	uint height;
 	uint iterations;
-	dec tar_r;
-	dec tar_i;
+	cmplx tar;
 	cmplx r;
 	cmplx i;
 } project;
@@ -22,5 +21,6 @@ typedef struct
 BOOL project_exists(char const * const);
 BOOL project_create(project const * const, char const * const);
 BOOL project_read(project * * const, char const * const);
+BOOL project_uptar(cmplx const * const, char const * const);
 
 #endif

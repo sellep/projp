@@ -38,18 +38,14 @@ BOOL project_create(project const * const p, char const * const path)
 	buf = path_combine(path, CFG_NAME);
 	f = fopen(buf, "a+");
 
-	sprintf(f, "width=%u\n", p->width);
-	sprintf(f, "height=%u\n", p->height);
-	sprintf(f, "iterations=%u", p->iterations);
+	sprintf(f, "width=%u", p->width);
+	sprintf(f, "\nheight=%u", p->height);
+	sprintf(f, "\niterations=%u", p->iterations);
 
-	//in debug mode, target not available while creation
-	if (p->tar_r != NULL && p->tar_i != NULL)
-	{
-		sprintf(f, "\ntar_r=");
-		dec_sprint(f, &p->tar_r);
-		sprintf(f, "\ntar_i=");
-		dec_sprint(f, &p->tar_i);
-	}
+	sprintf(f, "\ntar_r=");
+	dec_sprint(f, &p->tar.r);
+	sprintf(f, "\ntar_i=");
+	dec_sprint(f, &p->tar.i);
 
 	fclose(f);
 	return TRUE;
