@@ -8,6 +8,7 @@ char* path_combine(char const * const path, char const * const name)
 	char *full_path;
 	uint len_path;
 	uint len_name;
+	uint off_slash = 0;
 
 	len_path = strlen(path);
 	len_name = strlen(name);
@@ -16,17 +17,14 @@ char* path_combine(char const * const path, char const * const name)
 
 	memcpy(full_path, path, sizeof(char) * len_path);
 
-	if (path[len_path - 1] == '/')
-	{
-		memcpy(full_path + len_path, name, sizeof(char) * len_name);
-		full_path[len_path + len_name] = NULL_TERM;
-	}
-	else
+	if (path[len_path - 1] != '/')
 	{
 		full_path[len_path] = '/';
-		memcpy(full_path + len_path + 1, name, sizeof(char) * len_name);
-		full_path[len_path + 1 + len_name] = NULL_TERM;
+		off_slash = 1;
 	}
+
+	memcpy(full_path + len_path + off_slash, name, sizeof(char) * len_name);
+	full_path[len_path + off_slash + len_name] = NULL_TERM;
 
 	return full_path;
 }
