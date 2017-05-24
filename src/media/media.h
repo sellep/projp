@@ -22,4 +22,6 @@ void palette_ipol(palette const * const, color const * const, uint const);
 BOOL palette_write(palette const, char const * const);
 BOOL palette_read(palette * const, char const * const);
 
+BOOL bmp_write(uint const, uint const, color const * const, char const * const);
+
 #endif
