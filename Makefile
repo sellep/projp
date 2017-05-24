@@ -17,6 +17,7 @@ OBJ=watch.o \
 	dec_zero.o \
 	dec_rand.o \
 	dec_print.o \
+	dec_sprintf.o \
 	dec_ucmp.o \
 	dec_cmp.o \
 	dec_cpy.o \
