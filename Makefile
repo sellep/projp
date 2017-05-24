@@ -7,6 +7,9 @@ OBJ=watch.o \
 	file_fnext.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
+	palette_ipol.o \
+	palette_init.o \
+	palette_free.o \
 	dec_zero.o \
 	dec_rand.o \
 	dec_print.o \
@@ -49,6 +52,9 @@ TST=dec_uadd_commutative.o \
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
 %.o : src/utils/%.c
+	$(CC) $(CFLAGS) -o obj/$@ -c $<
+
+%.o : src/media/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
 
 %.o : src/math/%.c

@@ -5,18 +5,20 @@
 
 typedef struct
 {
-	ubyte r;
-	ubyte g;
-	ubyte b;
+	byte r;
+	byte g;
+	byte b;
 } color;
 
 typedef struct
 {
-	color *plt;
+	color *clr;
 	uint len;
 } palette;
 
-void palette_ipol(palette * const, color * const * const, uint const);
+palette* palette_init(uint const);
+void palette_free(palette*);
+void palette_ipol(palette const * const, color const * const, uint const);
 BOOL palette_write(palette const, char const * const);
 BOOL palette_read(palette * const, char const * const);
 

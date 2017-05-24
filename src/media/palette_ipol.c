@@ -1,36 +1,55 @@
 #include "media.h"
 
-#define ROUND(d)((int)(d+0.5))
-
-BOOL palette_ipol(palette * const p, color const * const c, uint const bas)
+void palette_ipol(palette const * const plt, color const * const c, uint const bas)
 {
 	uint i;
-	uint j;
-	uint p;
+	uint b;
 	uint pad;
 	uint lpad;
+	uint div;
 
-	double rd;
-	double gd;
-	double bd;
+	double cr;
+	double cg;
+	double cb;
+	double dr;
+	double dg;
+	double db;
 
-	p->plt = (color*)malloc(sizeof(color) * p->len);
+	pad = (plt->len - 1) / (bas - 1);
+	lpad = plt->len - (bsa - 2) * (pad + 1) - 2;
 
-	pad = ROUND((p->len - bas) / ((double)bas - 1));
-
-	for (i = 0, j = 0; i < bas - 1; i++)
+	for (i = 0, b = 0; i < plt->len - 1; i++)
 	{
-		p->plt[j].r = c[i].r;
-		p->plt[j].g = c[i].g;
-		p->plt[j].b = c[i].b;
-
-		rd = ((double)c[i + 1].r - c[i].r) / (pad + 1);
-		gd = ((double)c[i + 1].g - c[i].g) / (pad + 1);
-		bd = ((double)c[i + 1].b - c[i].b) / (pad + 1);
-
-		for (j = j + 1, p = 0; p < pad; j++, p++)
+		if (i % (pad + 1) == 0)
 		{
-			p->plt[j].r = ()(p->plt[j - 1].r + rd);
+			plt->clr[i].r = c[b].r;
+			plt->clr[i].g = c[b].g;
+			plt->clr[i].b = c[b].b;
+
+			cr = c[b].r;
+			cg = c[b].g;
+			cb = c[b].b;
+
+			div = b + 2== bsa ? lpad + 1 : pad + 1;
+			rd = (c[b + 1].r - cr) / div;
+			gd = (c[b + 1].g - cg) / div;
+			bd = (c[b + 1].b - cb) / div;
+
+			b++;
+		}
+		else
+		{
+			cr += dr;
+			cg += dg;
+			cb += db;
+
+			plt->clr[i].r = (byte) cr;
+			plt->clr[i].g = (byte) cg;
+			plt->clr[i].b = (byte) cb;
 		}
 	}
+
+	plt->clr[plt->len - 1].r = c[bas - 1];
+	plt->clr[plt->len - 1].g = c[bas - 1];
+	plt->clr[plt->len - 1].b = c[bas - 1];
 }
