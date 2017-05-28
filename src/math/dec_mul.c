@@ -19,9 +19,9 @@ void dec_mul(dec * const c, dec * const a, dec * const b)
 		MKPOS(b);
 		bsign = NEGATIVE;
 	}
-	printf("MUL a/b: %u/%u\n", ((uint*) a)[0], ((uint*) b)[0]);
+	//printf("MUL a/b: %u/%u\n", ((uint*) a)[0], ((uint*) b)[0]);
 	dec_umul(r, (uint*) a, (uint*) b, DEC_LEN + 1);
-	printf("MUL: %u\n", r[1]);
+	//printf("MUL: %u\n", r[1]);
 	memcpy(c, r + 1, sizeof(dec));
 
 	if (asign == POSITIVE)

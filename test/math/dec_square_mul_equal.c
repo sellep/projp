@@ -1,4 +1,4 @@
-#include "test.h"
+#include "../test.h"
 
 int dec_square_mul_equal()
 {

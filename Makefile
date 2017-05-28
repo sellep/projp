@@ -52,8 +52,7 @@ OBJ=watch.o \
 	iframe_writenext.o \
 	iframe_write_dbg.o \
 	bmp_write.o \
-	mandelbrot.o \
-	debug_window.o
+	mandelbrot.o
 
 TST=dec_uadd_commutative.o \
 	dec_add_zero.o \
