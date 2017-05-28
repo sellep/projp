@@ -2,7 +2,7 @@
 
 int dec_square_mul_equal()
 {
-	dec a, b, c;
+	dec a, b, c, d;
 
 	watch *wsquare, *wmul, *wcmp, *wall;
 	int cmp;
@@ -18,17 +18,19 @@ int dec_square_mul_equal()
 	for (i = 0; i < ITERATIONS; i++)
 	{
 		dec_rand(&a);
+		MKPOS(&a);
+		dec_cpy(&b, &a);
 
 		wstart(wsquare);
-		dec_square(&b, &a);
+		dec_square(&c, &a);
 		wstop(wsquare);
 
 		wstart(wmul);
-		dec_mul(&c, &a, &a);
+		dec_mul(&d, &a, &b);
 		wstop(wmul);
 
 		wstart(wcmp);
-		cmp = dec_cmp(&b, &c);
+		cmp = dec_cmp(&c, &d);
 		wstop(wcmp);
 
 		if (cmp != EQUAL)
@@ -47,13 +49,15 @@ int dec_square_mul_equal()
 	}
 	else
 	{
-		printf("failure\n");
+		printf("failure (iteration: %u)\n", i);
 		printf("a: ");
 		dec_print(&a);
 		printf("\nb: ");
 		dec_print(&b);
 		printf("\nc: ");
 		dec_print(&c);
+		printf("\nd: ");
+		dec_print(&d);
 		printf("\n");
 	}
 

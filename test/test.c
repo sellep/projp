@@ -17,7 +17,6 @@ FILE* get_log()
 
 void close_log(FILE const * const f)
 {
-	
 	fclose(f);
 }
 

@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#define ITERATIONS 100000
+#define ITERATIONS 1000000
 
 FILE* get_log();
 void close_log(FILE const * const);

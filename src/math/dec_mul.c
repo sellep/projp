@@ -4,29 +4,43 @@
 
 void dec_mul(dec * const c, dec * const a, dec * const b)
 {
+	//printf("%ua * %ub = ", a->sign, b->sign);
+
 	uint r[2 * (DEC_LEN + 1)];
-	ushort asign = POSITIVE;
-	ushort bsign = POSITIVE;
+	BOOL aneg = FALSE;
+	BOOL bneg = FALSE;
 
 	if (ISNEG(a))
 	{
 		MKPOS(a);
-		asign = NEGATIVE;
+		aneg = TRUE;
 	}
 
 	if (ISNEG(b))
 	{
 		MKPOS(b);
-		bsign = NEGATIVE;
+		bneg = TRUE;
 	}
-	//printf("MUL a/b: %u/%u\n", ((uint*) a)[0], ((uint*) b)[0]);
+
 	dec_umul(r, (uint*) a, (uint*) b, DEC_LEN + 1);
-	//printf("MUL: %u\n", r[1]);
 	memcpy(c, r + 1, sizeof(dec));
 
-	if (asign == POSITIVE)
+	if (aneg)
 	{
-		if (bsign == NEGATIVE)
+		MKNEG(a);
+
+		if (bneg)
+		{
+			MKNEG(b);
+		}
+		else if (!dec_iszero(c))
+		{
+			MKNEG(c);
+		}
+	}
+	else
+	{
+		if (bneg)
 		{
 			MKNEG(b);
 
@@ -36,17 +50,6 @@ void dec_mul(dec * const c, dec * const a, dec * const b)
 			}
 		}
 	}
-	else
-	{
-		MKNEG(a);
 
-		if (bsign == NEGATIVE)
-		{
-			MKNEG(b);
-		}
-		else if (!dec_iszero(c))
-		{
-			MKNEG(c);
-		}
-	}
+	//printf("%ua * %ub = %uc\n", a->sign, b->sign, c->sign);
 }

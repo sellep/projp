@@ -9,20 +9,16 @@ void dec_square(dec * const c, dec * const a)
 	ulong tmp;
 	CARRY carry;
 
-	ushort asign = POSITIVE;
+	BOOL aneg = FALSE;
 	uint *ra = (uint*) a;
 
-	if (ISPOS(a))
+	if (ISNEG(a))
 	{
-		MKNEG(a);
-		asign = NEGATIVE;
+		MKPOS(a);
+		aneg = TRUE;
 	}
 
-	printf("\nWICHTIG: %u\n", ra[0]);
-	
 	memset(rc, 0, sizeof(dec) * 2);
-
-	
 
 	for (i = DEC_LEN + 1; i >= 0; i--)
 	{
@@ -35,12 +31,25 @@ void dec_square(dec * const c, dec * const a)
 			carry = OVERFLOW(tmp);
 		}
 
-		rc[i] += carry;
+		j = i;
+
+		while (TRUE)
+		{
+			tmp = (ulong)rc[j] + carry;
+			rc[j] = VALUE(tmp);
+			carry = OVERFLOW(tmp);
+
+			if (!carry)
+				break;
+
+			printf("overflow detected\n");
+			j--;
+		}
 	}
 
 	memcpy(c, rc + 1, sizeof(dec));
 
-	if (asign == NEGATIVE)
+	if (aneg)
 	{
 		MKNEG(a);
 	}

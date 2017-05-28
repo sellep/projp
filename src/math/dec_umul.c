@@ -21,6 +21,19 @@ void dec_umul(uint * const c, uint const * const a, uint const * const b, uint c
 			carry = OVERFLOW(tmp);
 		}
 
-		c[i] += carry;
+		j = i;
+
+		while (TRUE)
+		{
+			tmp = (ulong)c[j] + carry;
+			c[j] = VALUE(tmp);
+			carry = OVERFLOW(tmp);
+
+			if (!carry)
+				break;
+
+			printf("overflow detected!\n");
+			j--;
+		}
 	}
 }
