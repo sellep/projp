@@ -18,7 +18,6 @@ void fast_kara_mul(uint * const c , uint const * const a, uint const * const b, 
 	uint *al = a + hlen;
 	uint *bl = b + hlen;
 
-
 	uint z2len = 2 * (llen + 1);
 
 	uint *as = buf;
