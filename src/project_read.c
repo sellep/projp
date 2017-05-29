@@ -21,7 +21,6 @@ BOOL project_read(project * const p, char const * const path)
 		return FALSE;
 	}
 
-	
 
 	fclose(f);
 	free(cfg_path);
