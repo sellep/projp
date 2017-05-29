@@ -2,10 +2,13 @@
 
 #include <string.h>
 
-extern inline void fast_kara_mul(uint * const, uint const * const, uint const * const, uint const);
+#define BUFFER_SIZE 148
+
+extern inline void fast_kara_mul(uint * const, uint const * const, uint const * const, uint const * const, uint const);
 
 void fast_kara(dec * const c, dec * const a, dec * const b)
 {
+	uint buf[sizeof(uint) * BUFFER_SIZE];
 	uint r[2 * (DEC_LEN + 1)];
 	uint asign;
 	uint bsign;
@@ -30,7 +33,7 @@ void fast_kara(dec * const c, dec * const a, dec * const b)
 		bsign = NEGATIVE;
 	}
 
-	fast_kara_mul(r, a, b, DEC_LEN + 1);
+	fast_kara_mul(r, a, b, buf, DEC_LEN + 1);
 
 	memcpy(c, r, sizeof(dec));
 
