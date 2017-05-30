@@ -1,0 +1,27 @@
+#this is a default project
+
+#target bitmap width
+width=500
+
+#target bitmap height
+height=400
+
+#fractal max iterations
+iterations=1000
+
+#inital real/imaginary min and max values (double)
+init_r_min=-2.[2147483648]
+init_r_max=0.[2147483648]
+init_i_min=-1
+init_i_max=1
+
+#debug palette path
+debug_plt_path=/home/pascal/Documents/100000.plt
+
+#iframe location
+iframe_dir_path=iframes/
+
+#allow computation on host [y/n]
+allow_host=y
+
+
