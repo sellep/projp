@@ -21,6 +21,7 @@ int dec_sub_commutative();
 int dec_mul_zero();
 int dec_mul_commutative();
 int dec_uadd2i_equal();
+int dec_imul_idiv_equal();
 int kara_mul_equal();
 int kara_perf();
 

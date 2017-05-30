@@ -57,6 +57,7 @@ TST=dec_uadd_commutative.o \
 	dec_mul_zero.o \
 	dec_mul_commutative.o \
 	dec_uadd2i_equal.o \
+	dec_imul_idiv_equal.o \
 	kara_mul_equal.o \
 	kara_perf.o \
 	test.o

@@ -32,6 +32,9 @@ int main()
 	printf("dec_uadd2i_equal ");
 	tres = dec_uadd2i_equal();
 
+	printf("dec_imul_idiv_equal ");
+	tres = dec_imul_idiv_equal();
+
 	printf("kara_mul_equal ");
 	tres = kara_mul_equal();
 
