@@ -3,6 +3,8 @@
 
 #include "../defs.h"
 
+#include <stdio.h>
+
 #define DEC_LEN 31
 #define DEC_BASE 32
 
@@ -33,22 +35,22 @@ typedef uint CARRY;
 #define MKPOS(d)((d)->sign = POSITIVE)
 #define MKNEG(d)((d)->sign = NEGATIVE)
 
-inline void dec_zero(dec * const);
+void dec_zero(dec * const);
 void dec_sprint(FILE *, dec const * const);
 void dec_print(dec const * const);
 void dec_rand(dec * const);
-inline BOOL dec_iszero(dec const * const);
-inline void dec_cpy(dec * const, dec const * const);
-inline int dec_ucmp(dec const * const, dec const * const);
-inline int dec_cmp(dec const * const, dec const * const);
-inline void dec_add(dec * const, dec const * const, dec const * const);
-inline ushort dec_uadd2i(dec const * const, dec const * const);
-inline void dec_sub(dec * const, dec const * const, dec const * const);
-inline void dec_uadd(dec * const, dec const * const, dec const * const);
-inline void dec_usub(dec * const, dec const * const, dec const * const);
+BOOL dec_iszero(dec const * const);
+void dec_cpy(dec * const, dec const * const);
+int dec_ucmp(dec const * const, dec const * const);
+int dec_cmp(dec const * const, dec const * const);
+void dec_add(dec * const, dec const * const, dec const * const);
+ushort dec_uadd2i(dec const * const, dec const * const);
+void dec_sub(dec * const, dec const * const, dec const * const);
+void dec_uadd(dec * const, dec const * const, dec const * const);
+void dec_usub(dec * const, dec const * const, dec const * const);
 
-inline void dec_umul(uint * const, uint const * const, uint const * const, uint const);
-inline void dec_mul(dec * const, dec * const, dec * const);
-inline void dec_imul(dec * const, dec const * const, uint const);
+void dec_umul(uint * const, uint const * const, uint const * const, uint const);
+void dec_mul(dec * const, dec * const, dec * const);
+void dec_imul(dec * const, dec const * const, uint const);
 
 #endif

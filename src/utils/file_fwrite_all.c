@@ -23,5 +23,5 @@ int fwrite_all(void const * const buf, uint len, char const * const fname)
 
 	if (fclose(fptr) != 0)
 		return FCLOSE_FAILED;
-	return OK;
+	return FOK;
 }

@@ -10,7 +10,6 @@ OBJ=watch.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
 	project_exists.o \
-	project_create.o \
 	project_uptar.o \
 	palette_ipol.o \
 	palette_init.o \
@@ -18,7 +17,7 @@ OBJ=watch.o \
 	dec_zero.o \
 	dec_rand.o \
 	dec_print.o \
-	dec_sprintf.o \
+	dec_sprint.o \
 	dec_ucmp.o \
 	dec_cmp.o \
 	dec_cpy.o \

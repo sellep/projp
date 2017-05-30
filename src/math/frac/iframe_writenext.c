@@ -7,7 +7,8 @@
 
 BOOL iframe_writenext(iframe const * const req, char const * const fname)
 {
-	uint *buf;
+	return TRUE;
+	/*uint *buf;
 	uint len;
 	char *next;
 	int res;
@@ -37,5 +38,5 @@ BOOL iframe_writenext(iframe const * const req, char const * const fname)
 	if (res != FOK)
 		return FALSE;
 
-	return TRUE;
+	return TRUE;*/
 }

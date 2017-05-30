@@ -2,7 +2,7 @@
 
 #define IDX(x,y,w)(w*y+x)
 
-void mandelbrot(iframe const * const req, dec const * const x0, dec const * const y0, complex const * const delta)
+void mandelbrot(iframe const * const req, dec const * const x0, dec const * const y0, cmplx const * const delta)
 {
 	uint x;
 	uint y;
@@ -20,9 +20,9 @@ void mandelbrot(iframe const * const req, dec const * const x0, dec const * cons
 	{
 		for (x = 0; x < req->width; x++)
 		{
-			dec_imul(cr, dx, x);
+			dec_imul(cr, &delta->r, x);
 			dec_add(cr, x0, cr);
-			dec_imul(ci, dy, y);
+			dec_imul(ci, &delta->i, y);
 			dec_add(ci, y0, ci);
 
 			i = VALUE_MAX;
@@ -47,9 +47,9 @@ void mandelbrot(iframe const * const req, dec const * const x0, dec const * cons
 
 				i++;
 			}
-			while (i < req->iterations && dec_uadd2i(&zr2, &zi2) < FRAC_THRESHOLD);
+			while (i < req->iterations && dec_uadd2i(zr2, zi2) < FRAC_THRESHOLD);
 
-			req->frame[IDX(x, y, width)] = i;
+			req->frame[IDX(x, y, req->width)] = i;
 		}
 
 	}

@@ -7,6 +7,6 @@ typedef struct
 {
 	dec r;
 	dec i;
-} complex;
+} cmplx;
 
 #endif

@@ -6,7 +6,7 @@
 #define ushort uint16_t
 #define uint uint32_t
 #define ulong uint64_t
-#define byte unsigned char;
+#define byte unsigned char
 
 #define BOOL int
 #define TRUE 1

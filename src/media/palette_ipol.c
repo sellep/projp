@@ -16,7 +16,7 @@ void palette_ipol(palette const * const plt, color const * const c, uint const b
 	double db;
 
 	pad = (plt->len - 1) / (bas - 1);
-	lpad = plt->len - (bsa - 2) * (pad + 1) - 2;
+	lpad = plt->len - (bas - 2) * (pad + 1) - 2;
 
 	for (i = 0, b = 0; i < plt->len - 1; i++)
 	{
@@ -30,10 +30,10 @@ void palette_ipol(palette const * const plt, color const * const c, uint const b
 			cg = c[b].g;
 			cb = c[b].b;
 
-			div = b + 2== bsa ? lpad + 1 : pad + 1;
-			rd = (c[b + 1].r - cr) / div;
-			gd = (c[b + 1].g - cg) / div;
-			bd = (c[b + 1].b - cb) / div;
+			div = b + 2== bas ? lpad + 1 : pad + 1;
+			dr = (c[b + 1].r - cr) / div;
+			dg = (c[b + 1].g - cg) / div;
+			db = (c[b + 1].b - cb) / div;
 
 			b++;
 		}
@@ -49,7 +49,7 @@ void palette_ipol(palette const * const plt, color const * const c, uint const b
 		}
 	}
 
-	plt->clr[plt->len - 1].r = c[bas - 1];
-	plt->clr[plt->len - 1].g = c[bas - 1];
-	plt->clr[plt->len - 1].b = c[bas - 1];
+	plt->clr[plt->len - 1].r = c[bas - 1].r;
+	plt->clr[plt->len - 1].g = c[bas - 1].g;
+	plt->clr[plt->len - 1].b = c[bas - 1].b;
 }
