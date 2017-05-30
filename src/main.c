@@ -1,31 +1,14 @@
-#define MODE_DEBUG 0
-#define MODE_LIVE 1
+#include "project.h"
 
-/*
-	<project_path>\
-		projp.cfg - contains information about width, height, iterations, tar_r, tar_i
-		iframes\
-			
-*/
-
-/*
-	projp palette
-		-> creates a palette creation window
-
-	projp live <dir>
-		#continues if projp.cfg found
-		#opens projp project settings window (palette?)
-
-	projp debug <dir> <width> <height> <iterations>
-		#continues if projp.cfg found
-		#ifnot palette window?
-*/
+#include <stdio.h>
 
 int main(int argc, char *argv[])
 {
-	//check for cuda
+	project proj;
+	project_read(&proj, "/home/pascal/Documents/def.proj");
 
-	//is debug
+	printf("width: %zu\n", proj.width);
+	printf("height: %zu\n", proj.height);
 
-	
+	return 0;
 }

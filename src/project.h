@@ -10,10 +10,11 @@
 
 typedef struct
 {
-	uint width;
-	uint height;
-	uint iterations;
+	ssize_t width;
+	ssize_t height;
+	size_t iterations;
 	cmplx tar;
+//based on current iteration
 	cmplx r;
 	cmplx i;
 } project;

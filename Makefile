@@ -11,6 +11,7 @@ OBJ=watch.o \
 	file_fread_all.o \
 	project_exists.o \
 	project_uptar.o \
+	project_read.o \
 	palette_ipol.o \
 	palette_init.o \
 	palette_free.o \
@@ -82,6 +83,7 @@ TST=dec_uadd_commutative.o \
 
 all: clean $(OBJ)
 	ar rvs lib/libproip.a $(addprefix obj/, $(OBJ))
+	$(CC) $(CFLAGS) -o bin/main src/main.c -Llib -lproip
 
 test: all $(TST)
 	$(CC) $(CFLAGS) -o bin/test $(addprefix obj/, $(TST)) -Llib -lproip
