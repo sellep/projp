@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
 	printf("width: %zu\n", proj.width);
 	printf("height: %zu\n", proj.height);
+	printf("iterations: %zu\n", proj.iterations);
 
 	return 0;
 }

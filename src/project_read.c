@@ -65,6 +65,12 @@ BOOL project_read(project * const p, char const * const path)
 			p->height = atoi(line + eq + 1);
 			continue;
 		}
+
+		if (strcmp("iterations", line) == 0)
+		{
+			p->iterations = atoi(line + eq + 1);
+			continue;
+		}
 	}
 
 
