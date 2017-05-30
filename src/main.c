@@ -88,8 +88,16 @@ int main(int argc, char *argv[])
 	}
 
 	//invoke mandelbrot on host
+	cmplx delta;
+
+	
+	
+
 	while (TRUE)
 	{
+		//compute delta
+		dec_sub(&delta.r, &proj.init_r_max, &proj.init_r_min);
+
 		break;
 	}
 

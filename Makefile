@@ -36,6 +36,7 @@ OBJ=watch.o \
 	dec_umul.o \
 	dec_mul.o \
 	dec_imul.o \
+	dec_idiv.o \
 	kara_combine.o \
 	kara_sub.o \
 	kara_add.o \
