@@ -32,6 +32,7 @@ BOOL project_read(project * const p, char const * const path)
 	ssize_t eq;
 
 	p->debug_plt_path = NULL;
+	p->iframe_dir_path = NULL;
 
 	f = fopen(path, "r");
 
@@ -106,6 +107,17 @@ BOOL project_read(project * const p, char const * const path)
 			p->debug_plt_path = (char*) malloc(sizeof(char) * (read - eq - 1));
 			strncpy(p->debug_plt_path, line + eq + 1, read - eq - 2);
 			p->debug_plt_path[read - eq - 2] = NULL_TERM;
+			continue;
+		}
+
+		if (strcmp("iframe_dir_path", line) == 0)
+		{
+			if (read <= sizeof("iframe_dir_path") + 1)
+				continue;
+
+			p->iframe_dir_path = (char*) malloc(sizeof(char) * (read - eq - 1));
+			strncpy(p->iframe_dir_path, line + eq + 1, read - eq - 2);
+			p->iframe_dir_path[read - eq - 2] = NULL_TERM;
 			continue;
 		}
 

@@ -20,6 +20,7 @@ typedef struct
 	double init_i_max;
 
 	char *debug_plt_path;
+	char *iframe_dir_path;
 	char allow_debug_host;
 
 
