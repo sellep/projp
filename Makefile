@@ -13,9 +13,12 @@ OBJ=watch.o \
 	project_exists.o \
 	project_uptar.o \
 	project_read.o \
+	color_rand.o \
+	palette_write.o \
 	palette_ipol.o \
 	palette_init.o \
 	palette_free.o \
+	palette_read.o \
 	dec_zero.o \
 	dec_rand.o \
 	dec_print.o \

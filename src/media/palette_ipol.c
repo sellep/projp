@@ -1,6 +1,6 @@
 #include "media.h"
 
-void palette_ipol(palette const * const plt, color const * const c, uint const bas)
+void palette_ipol(palette const * const plt, color const * const c, size_t const bas)
 {
 	uint i;
 	uint b;

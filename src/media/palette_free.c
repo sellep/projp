@@ -2,8 +2,7 @@
 
 #include <stdlib.h>
 
-void palette_free(palette * plt)
+void palette_free(palette * const plt)
 {
 	free(plt->clr);
-	free(plt);
 }

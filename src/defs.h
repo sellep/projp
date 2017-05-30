@@ -2,6 +2,7 @@
 #define __P_DEFINITIONS_H
 
 #include <inttypes.h>
+#include <stddef.h>
 
 #define ushort uint16_t
 #define uint uint32_t

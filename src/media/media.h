@@ -13,13 +13,15 @@ typedef struct
 typedef struct
 {
 	color *clr;
-	uint len;
+	size_t len;
 } palette;
 
+void color_rand(color * const);
+
 palette* palette_init(uint const);
-void palette_free(palette*);
-void palette_ipol(palette const * const, color const * const, uint const);
-BOOL palette_write(palette const, char const * const);
+void palette_free(palette * const);
+void palette_ipol(palette const * const, color const * const, size_t const);
+BOOL palette_write(palette const * const, char const * const);
 BOOL palette_read(palette * const, char const * const);
 
 BOOL bmp_write(uint const, uint const, color const * const, char const * const);
