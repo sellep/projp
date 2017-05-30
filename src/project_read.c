@@ -71,6 +71,18 @@ BOOL project_read(project * const p, char const * const path)
 			p->iterations = atoi(line + eq + 1);
 			continue;
 		}
+
+		if (strcmp("init_r_min", line) == 0)
+		{
+			p->init_r_min = atof(line + eq + 1);
+			continue;
+		}
+
+		if (strcmp("init_r_max", line) == 0)
+		{
+			p->init_r_max = atof(line + eq + 1);
+			continue;
+		}
 	}
 
 

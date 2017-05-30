@@ -13,6 +13,10 @@ typedef struct
 	ssize_t width;
 	ssize_t height;
 	size_t iterations;
+
+	double init_r_min;
+	double init_r_max;
+
 	cmplx tar;
 //based on current iteration
 	cmplx r;
