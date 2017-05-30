@@ -121,9 +121,9 @@ BOOL project_read(project * const p, char const * const path)
 			continue;
 		}
 
-		if (strcmp("allow_debug_host", line) == 0)
+		if (strcmp("allow_host", line) == 0)
 		{
-			p->allow_debug_host = line[eq + 1];
+			p->allow_host = line[eq + 1];
 			continue;
 		}
 	}
@@ -131,5 +131,12 @@ BOOL project_read(project * const p, char const * const path)
 
 	fclose(f);
 	free(line);
+
+	if (p->iframe_dir_path == NULL)
+	{
+		fprintf(stderr, "iframe_dir_path is not configured!\n");
+		return FALSE;
+	}
+
 	return TRUE;
 }

@@ -21,6 +21,11 @@ static rect _r;
 
 static gint cnvs_leave(GtkWidget *w, GdkEvent *e, gpointer data)
 {
+	if (_r.flg == OPEN)
+	{
+		gtk_widget_queue_draw(w);
+	}
+
 	_r.flg = NONE;
 	return TRUE;
 }

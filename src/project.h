@@ -21,7 +21,7 @@ typedef struct
 
 	char *debug_plt_path;
 	char *iframe_dir_path;
-	char allow_debug_host;
+	char allow_host;
 
 
 	cmplx tar;

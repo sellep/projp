@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	if (!open_project(argc, argv, &proj))
 		return 1;
 
-	printf("iframe dir path: %s\n", proj.iframe_dir_path);
+	
 
 	int status = show_debug("/home/pascal/earth.jpg");
 
