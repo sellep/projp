@@ -57,29 +57,6 @@ static gint cnvs_move(GtkWidget *w, GdkEventMotion *e, gpointer data)
 	return FALSE;
 }
 
-static gboolean back_draw(GtkWidget *w, GdkEvent *e, gpointer data)
-{
-	GdkPixbuf *pixbuf;
-	GError *err = NULL;
-	cairo_t *cr;
-
-	pixbuf = gdk_pixbuf_new_from_file((char *) data, &error);
-	if(!pixbuf)
-	{
-		g_printerr("%s\n", error->message);
-		g_error_free(error);
-		return TRUE;
-	}
-
-	cr = gdk_cairo_create(gtk_widget_get_window(w));
-
-	gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
-
-	cairo_paint (cr);
-	cairo_destroy(cr);
-	return TRUE;
-}
-
 static gboolean cnvs_draw(GtkWidget *w, GdkEvent *e, gpointer data)
 {
 	cairo_t *cr;
@@ -90,7 +67,7 @@ static gboolean cnvs_draw(GtkWidget *w, GdkEvent *e, gpointer data)
 	cr = gdk_cairo_create(gtk_widget_get_window(w));
 
 	cairo_set_source_rgb(cr, 255, 0, 0);
-	cairo_set_line_width(cr, 1);
+	cairo_set_line_width(cr, 0.5);
 
 	cairo_move_to(cr, _r.x0, _r.y0);
 	cairo_line_to(cr, _r.x0, _r.y1);
@@ -104,12 +81,42 @@ static gboolean cnvs_draw(GtkWidget *w, GdkEvent *e, gpointer data)
 	return TRUE;
 }
 
+static gboolean bg_draw(GtkWidget *w, GdkEvent *e, gpointer data)
+{
+	GdkPixbuf *pixbuf;
+	cairo_t *cr;
+
+	int width = gtk_widget_get_allocated_width(w);
+	int height = gtk_widget_get_allocated_height(w);
+
+	pixbuf = gdk_pixbuf_scale_simple((GdkPixbuf*) data, width, height,  GDK_INTERP_BILINEAR);
+
+	cr = gdk_cairo_create(gtk_widget_get_window(w));
+
+	gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+
+	cairo_paint(cr);
+	cairo_destroy(cr);
+	return TRUE;
+}
+
 static void activate(GtkApplication *app, gpointer user_data)
 {
 	GtkWidget *w;
 	GtkWidget *da;
 	GtkWidget *bg;
-	GtkOverlay *ov;
+	GtkWidget *ov;
+
+	GdkPixbuf *pixbuf;
+	GError *err = NULL;
+
+	pixbuf = gdk_pixbuf_new_from_file((char*) user_data, &err);
+	if (!pixbuf)
+	{
+		g_printerr("%s\n", err->message);
+		g_error_free(err);
+		return;
+	}
 
 	w = gtk_application_window_new(app);
 	gtk_window_set_title(GTK_WINDOW(w), "projp debug");
@@ -125,11 +132,11 @@ static void activate(GtkApplication *app, gpointer user_data)
 	gtk_widget_set_events(da, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_POINTER_MOTION_MASK | GDK_LEAVE_NOTIFY_MASK);
 
 	bg = gtk_drawing_area_new();
-	g_signal_connect(da, "draw", G_CALLBACK(back_draw), NULL);
+	g_signal_connect(bg, "draw", G_CALLBACK(bg_draw), pixbuf);
 
-	ov = (GtkOverlay*) gtk_overlay_new();
-	gtk_overlay_add_overlay(ov, bg);
-	gtk_overlay_add_overlay(ov, da);
+	ov = gtk_overlay_new();
+	gtk_overlay_add_overlay((GtkOverlay*)ov, bg);
+	gtk_overlay_add_overlay((GtkOverlay*)ov, da);
 
 	gtk_container_add(GTK_CONTAINER(w), ov);
 
@@ -142,7 +149,7 @@ int main(int argc, char **argv)
 	int status;
 
 	app = gtk_application_new("projp.gtk", G_APPLICATION_FLAGS_NONE);
-	g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+	g_signal_connect(app, "activate", G_CALLBACK(activate), "earth.jpg");
 	status = g_application_run(G_APPLICATION(app), argc, argv);
 	g_object_unref(app);
 
