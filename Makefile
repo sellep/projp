@@ -41,7 +41,8 @@ OBJ=watch.o \
 	fast_kara_mul.o \
 	fast_kara.o \
 	iframe_writenext.o \
-	mandelbrot.o
+	mandelbrot.o \
+	debug_window.o
 
 TST=dec_uadd_commutative.o \
 	dec_add_zero.o \
@@ -57,6 +58,9 @@ TST=dec_uadd_commutative.o \
 
 %.o : src/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
+
+%.o : src/windows/%.c
+	$(CC) $(CFLAGS) `pkg-config --cflags gtk+-3.0` -o obj/$@ -c $<
 
 %.o : src/utils/%.c
 	$(CC) $(CFLAGS) -o obj/$@ -c $<
@@ -84,7 +88,7 @@ TST=dec_uadd_commutative.o \
 
 all: clean $(OBJ)
 	ar rvs lib/libproip.a $(addprefix obj/, $(OBJ))
-	$(CC) $(CFLAGS) -o bin/main src/main.c -Llib -lproip
+	$(CC) $(CFLAGS) -o bin/main src/main.c -Llib -lproip `pkg-config --libs gtk+-3.0`
 
 test: all $(TST)
 	$(CC) $(CFLAGS) -o bin/test $(addprefix obj/, $(TST)) -Llib -lproip

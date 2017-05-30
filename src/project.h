@@ -16,8 +16,12 @@ typedef struct
 
 	double init_r_min;
 	double init_r_max;
+	double init_i_min;
+	double init_i_max;
 
-	char *def_plt_path;
+	char *debug_plt_path;
+	char allow_debug_host;
+
 
 	cmplx tar;
 //based on current iteration

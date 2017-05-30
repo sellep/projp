@@ -1,3 +1,5 @@
+#include "windows.h"
+
 #include <gtk/gtk.h>
 
 enum rect_flags {
@@ -37,12 +39,17 @@ static gint cnvs_press(GtkWidget *w, GdkEventButton *e, gpointer data)
 
 static gint cnvs_release(GtkWidget *w, GdkEventButton *e, gpointer data)
 {
+	GtkWidget *window;
+
 	if (_r.flg != OPEN)
 		return TRUE;
 
 	_r.x1 = e->x;
 	_r.y1 = e->y;
 	_r.flg = CLOSED;
+
+	window = gtk_widget_get_toplevel(w);
+	gtk_widget_destroy(window);	
 	return TRUE;
 }
 
@@ -143,14 +150,14 @@ static void activate(GtkApplication *app, gpointer user_data)
 	gtk_widget_show_all(w);
 }
 
-int main(int argc, char **argv)
+int show_debug(char const * const path)
 {
 	GtkApplication *app;
 	int status;
 
 	app = gtk_application_new("projp.gtk", G_APPLICATION_FLAGS_NONE);
-	g_signal_connect(app, "activate", G_CALLBACK(activate), "earth.jpg");
-	status = g_application_run(G_APPLICATION(app), argc, argv);
+	g_signal_connect(app, "activate", G_CALLBACK(activate), path);
+	status = g_application_run(G_APPLICATION(app), 0, NULL);
 	g_object_unref(app);
 
 	return status;

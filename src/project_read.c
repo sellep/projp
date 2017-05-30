@@ -31,7 +31,7 @@ BOOL project_read(project * const p, char const * const path)
 	ssize_t read;
 	ssize_t eq;
 
-	p->def_plt_path = NULL;
+	p->debug_plt_path = NULL;
 
 	f = fopen(path, "r");
 
@@ -86,14 +86,32 @@ BOOL project_read(project * const p, char const * const path)
 			continue;
 		}
 
-		if (strcmp("def_plt_path", line) == 0)
+		if (strcmp("init_i_min", line) == 0)
 		{
-			if (read <= sizeof("def_plt_path") + 1)
+			p->init_i_min = atof(line + eq + 1);
+			continue;
+		}
+
+		if (strcmp("init_i_max", line) == 0)
+		{
+			p->init_i_max = atof(line + eq + 1);
+			continue;
+		}
+
+		if (strcmp("debug_plt_path", line) == 0)
+		{
+			if (read <= sizeof("debug_plt_path") + 1)
 				continue;
 
-			p->def_plt_path = (char*) malloc(sizeof(char) * (read - eq - 1));
-			strncpy(p->def_plt_path, line + eq + 1, read - eq - 2);
-			p->def_plt_path[read - eq - 2] = NULL_TERM;
+			p->debug_plt_path = (char*) malloc(sizeof(char) * (read - eq - 1));
+			strncpy(p->debug_plt_path, line + eq + 1, read - eq - 2);
+			p->debug_plt_path[read - eq - 2] = NULL_TERM;
+			continue;
+		}
+
+		if (strcmp("allow_debug_host", line) == 0)
+		{
+			p->allow_debug_host = line[eq + 1];
 			continue;
 		}
 	}
