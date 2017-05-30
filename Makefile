@@ -20,6 +20,7 @@ OBJ=watch.o \
 	palette_free.o \
 	palette_read.o \
 	dec_zero.o \
+	dec_parse.o \
 	dec_rand.o \
 	dec_print.o \
 	dec_sprint.o \

@@ -77,25 +77,46 @@ BOOL project_read(project * const p, char const * const path)
 
 		if (strcmp("init_r_min", line) == 0)
 		{
-			p->init_r_min = atof(line + eq + 1);
+			if (!dec_parse(&p->init_r_min, line + eq + 1))
+			{
+				fprintf(stderr, "unable to parse init_r_min\n");
+				return FALSE;
+			}
+	
 			continue;
 		}
 
 		if (strcmp("init_r_max", line) == 0)
 		{
-			p->init_r_max = atof(line + eq + 1);
+
+			if (!dec_parse(&p->init_r_max, line + eq + 1))
+			{
+				fprintf(stderr, "unable to parse init_r_max\n");
+				return FALSE;
+			}
+	
 			continue;
 		}
 
 		if (strcmp("init_i_min", line) == 0)
 		{
-			p->init_i_min = atof(line + eq + 1);
+			if (!dec_parse(&p->init_i_min, line + eq + 1))
+			{
+				fprintf(stderr, "unable to parse init_i_min\n");
+				return FALSE;
+			}
+	
 			continue;
 		}
 
 		if (strcmp("init_i_max", line) == 0)
 		{
-			p->init_i_max = atof(line + eq + 1);
+			if (!dec_parse(&p->init_i_max, line + eq + 1))
+			{
+				fprintf(stderr, "unable to parse init_i_max\n");
+				return FALSE;
+			}
+	
 			continue;
 		}
 

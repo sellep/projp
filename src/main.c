@@ -3,6 +3,7 @@
 #include "utils/file.h"
 #include "media/media.h"
 #include "windows/windows.h"
+#include "math/frac/fractal.h"
 
 #include <stddef.h>
 #include <stdio.h>
@@ -68,6 +69,10 @@ int main(int argc, char *argv[])
 	if (!open_project(&proj, argc, argv))
 		return 1;
 
+	printf("dec init_r_min: ");
+	dec_print(&proj.init_r_min);
+	printf("\n");
+
 	if (proj.debug_plt_path == NULL)
 	{
 		fprintf(stderr, "debug palette path not configured!");
@@ -83,6 +88,10 @@ int main(int argc, char *argv[])
 	}
 
 	//invoke mandelbrot on host
+	while (TRUE)
+	{
+		break;
+	}
 
 	//int status = show_debug("/home/pascal/earth.jpg");
 

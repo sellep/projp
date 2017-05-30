@@ -14,10 +14,10 @@ typedef struct
 	ssize_t height;
 	size_t iterations;
 
-	double init_r_min;
-	double init_r_max;
-	double init_i_min;
-	double init_i_max;
+	dec init_r_min;
+	dec init_r_max;
+	dec init_i_min;
+	dec init_i_max;
 
 	char *debug_plt_path;
 	char *iframe_dir_path;
