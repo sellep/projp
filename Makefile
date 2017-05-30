@@ -9,6 +9,7 @@ OBJ=watch.o \
 	file_fnext.o \
 	file_fwrite_all.o \
 	file_fread_all.o \
+	project_free.o \
 	project_exists.o \
 	project_uptar.o \
 	project_read.o \

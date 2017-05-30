@@ -31,6 +31,8 @@ BOOL project_read(project * const p, char const * const path)
 	ssize_t read;
 	ssize_t eq;
 
+	p->def_plt_path = NULL;
+
 	f = fopen(path, "r");
 
 	if (!f)
@@ -81,6 +83,17 @@ BOOL project_read(project * const p, char const * const path)
 		if (strcmp("init_r_max", line) == 0)
 		{
 			p->init_r_max = atof(line + eq + 1);
+			continue;
+		}
+
+		if (strcmp("def_plt_path", line) == 0)
+		{
+			if (read <= sizeof("def_plt_path") + 1)
+				continue;
+
+			p->def_plt_path = (char*) malloc(sizeof(char) * (read - eq - 1));
+			strncpy(p->def_plt_path, line + eq + 1, read - eq - 2);
+			p->def_plt_path[read - eq - 2] = NULL_TERM;
 			continue;
 		}
 	}

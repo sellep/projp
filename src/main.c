@@ -12,6 +12,9 @@ int main(int argc, char *argv[])
 	printf("iterations: %zu\n", proj.iterations);
 	printf("init_r_min: %f\n", proj.init_r_min);
 	printf("init_r_max: %f\n", proj.init_r_max);
+	printf("def_plt_path: %s\n", proj.def_plt_path);
+
+	project_free(&proj);
 
 	return 0;
 }

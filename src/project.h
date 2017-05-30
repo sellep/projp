@@ -17,12 +17,15 @@ typedef struct
 	double init_r_min;
 	double init_r_max;
 
+	char *def_plt_path;
+
 	cmplx tar;
 //based on current iteration
 	cmplx r;
 	cmplx i;
 } project;
 
+void project_free(project * const);
 BOOL project_exists(char const * const);
 BOOL project_create(project const * const, char const * const);
 BOOL project_read(project * const, char const * const);

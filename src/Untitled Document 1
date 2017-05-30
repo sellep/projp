@@ -1,0 +1,6 @@
+#include "src/project.h"
+
+int main ()
+{
+	return 1;
+}
