@@ -51,7 +51,7 @@ void dec_uadd(dec * const, dec const * const, dec const * const);
 void dec_usub(dec * const, dec const * const, dec const * const);
 
 void dec_umul(uint * const, uint const * const, uint const * const, uint const);
-void dec_square(dec * const, dec const * const);
+void dec_square(dec * const, dec * const);
 void dec_mul(dec * const, dec * const, dec * const);
 void dec_imul(dec * const, dec const * const, uint const);
 void dec_idiv(dec * const, dec * const, size_t const);

@@ -33,6 +33,7 @@ OBJ=watch.o \
 	dec_uadd2i.o \
 	dec_usub.o \
 	dec_sub.o \
+	dec_square.o \
 	dec_umul.o \
 	dec_mul.o \
 	dec_imul.o \
