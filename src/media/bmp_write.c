@@ -55,7 +55,7 @@ BOOL bmp_write(uint const width, uint const height, color const * const pixels, 
 
 	//file writing, maybe should be removed and just pointer to raw bmp should returned
 	f = fopen(fname, "wb");
-	if (f != FOK)
+	if (!f)
 	{
 		free(img);
 		return FALSE;
@@ -70,7 +70,7 @@ BOOL bmp_write(uint const width, uint const height, color const * const pixels, 
 		fwrite(bmp_pad, 1, (4 - (width * 3) % 4) % 4, f);
 	}
 
-	fclose();
+	fclose(f);
 	free(img);
 	return TRUE;
 }

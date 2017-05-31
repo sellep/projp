@@ -1,8 +1,6 @@
 #include "fractal.h"
 
-#define IDX(x,y,w)(w*y+x)
-
-void mandelbrot(iframe const * const req, dec const * const x0, dec const * const y0, cmplx const * const delta)
+void mandelbrot(iframe const * const ifrm, dec const * const r_min, dec const * const i_min, cmplx const * const delta)
 {
 	uint x;
 	uint y;
@@ -16,17 +14,18 @@ void mandelbrot(iframe const * const req, dec const * const x0, dec const * cons
 	dec *zr2 = d + 4;
 	dec *zi2 = d + 5;
 
-	for (y = 0; y < req->height; y++)
+	for (y = 0; y < ifrm->height; y++)
 	{
-		for (x = 0; x < req->width; x++)
+		for (x = 0; x < ifrm->width; x++)
 		{
 			dec_imul(cr, &delta->r, x);
-			dec_add(cr, x0, cr);
+			dec_add(cr, r_min, cr);
 			dec_imul(ci, &delta->i, y);
-			dec_add(ci, y0, ci);
+			dec_add(ci, i_min, ci);
 
 			i = VALUE_MAX;
 
+			//set zr2 und zi2 to 0
 			memset(zr2, 0, 2 * sizeof(dec));
 
 			do
@@ -47,9 +46,9 @@ void mandelbrot(iframe const * const req, dec const * const x0, dec const * cons
 
 				i++;
 			}
-			while (i < req->iterations && dec_uadd2i(zr2, zi2) < FRAC_THRESHOLD);
+			while (i < ifrm->iterations - 1 && dec_uadd2i(zr2, zi2) < FRAC_THRESHOLD);
 
-			req->frame[IDX(x, y, req->width)] = i;
+			ifrm->frame[y * ifrm->width + x] = i;
 		}
 
 	}

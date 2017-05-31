@@ -69,10 +69,6 @@ int main(int argc, char *argv[])
 	if (!open_project(&proj, argc, argv))
 		return 1;
 
-	printf("dec init_r_min: ");
-	dec_print(&proj.init_r_min);
-	printf("\n");
-
 	if (proj.debug_plt_path == NULL)
 	{
 		fprintf(stderr, "debug palette path not configured!");
@@ -88,20 +84,51 @@ int main(int argc, char *argv[])
 	}
 
 	//invoke mandelbrot on host
-	cmplx delta;	
+	cmplx delta;
+	iframe ifrm;
+	color *pix;
+
+	iframe_init(&ifrm, &proj);
+	pix = (color*) malloc(sizeof(color) * proj.width * proj.height);
 
 	while (TRUE)
 	{
 		//compute delta
 		dec_sub(&delta.r, &proj.init_r_max, &proj.init_r_min);
 		dec_sub(&delta.i, &proj.init_i_max, &proj.init_i_min);
+		dec_idiv(&delta.r, &delta.r, proj.width);
+		dec_idiv(&delta.i, &delta.i, proj.height);
 		
+		//invoke mandelbrot
+		//->missing multiple core implementation
+		mandelbrot(&ifrm, &proj.init_r_min, &proj.init_i_min, &delta);
+
+		if (!iframe_write_dbg(&ifrm, "/tmp/iframe_dbg.txt"))
+		{
+			printf("failed to write debug iframe\n");
+			goto exit;
+		}
+
+		if (!iframe_map(pix, &ifrm, &plt))
+		{
+			printf("failed to map iframe\n");
+			goto exit;
+		}
+
+		if (!bmp_write(proj.width, proj.height, pix, "/tmp/frac.bmp"))
+		{
+			printf("failed to write bitmap\n");
+			goto exit;
+		}
 
 		break;
 	}
 
 	//int status = show_debug("/home/pascal/earth.jpg");
 
+exit:
+	free(pix);
+	iframe_free(&ifrm);
 	palette_free(&plt);
 	project_free(&proj);
 	return 0;

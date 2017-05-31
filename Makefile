@@ -45,7 +45,12 @@ OBJ=watch.o \
 	fast_kara_sub.o \
 	fast_kara_mul.o \
 	fast_kara.o \
+	iframe_init.o \
+	iframe_free.o \
+	iframe_map.o \
 	iframe_writenext.o \
+	iframe_write_dbg.o \
+	bmp_write.o \
 	mandelbrot.o \
 	debug_window.o
 
