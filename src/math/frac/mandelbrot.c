@@ -43,16 +43,20 @@ void mandelbrot(iframe const * const ifrm, dec const * const r_min, dec const * 
 				//zr2 = zr * zr - zi * zi;
 				dec_mul(zr2, zr, zr);
 
+				printf("zr: ");
+				dec_print(zr);
+				printf("\n");
+
 				printf("zr2: ");
 				dec_print(zr2);
 				printf("\n");
+
+				return;
 
 				dec_mul(zr, zi, zi);
 				dec_sub(zr2, zr2, zr);
 
 				i++;
-
-				return;
 			}
 			while (i < ifrm->iterations - 1 && dec_uadd2i(zr2, zi2) < FRAC_THRESHOLD);
 
