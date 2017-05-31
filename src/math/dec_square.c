@@ -5,20 +5,24 @@
 void dec_square(dec * const c, dec * const a)
 {
 	uint rc[2 * (sizeof(dec) / sizeof(uint))];
-	ushort asign = POSITIVE;
 	int i, j;
 	ulong tmp;
 	CARRY carry;
 
+	ushort asign = POSITIVE;
 	uint *ra = (uint*) a;
 
-	memset(rc, 0, sizeof(dec) * 2);
-
-	if (ISNEG(a))
+	if (ISPOS(a))
 	{
-		MKPOS(a);
+		MKNEG(a);
 		asign = NEGATIVE;
 	}
+
+	printf("\nWICHTIG: %u\n", ra[0]);
+	
+	memset(rc, 0, sizeof(dec) * 2);
+
+	
 
 	for (i = DEC_LEN + 1; i >= 0; i--)
 	{

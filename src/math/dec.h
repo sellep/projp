@@ -14,8 +14,13 @@
 
 typedef struct
 {
+	#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+	ushort intg;
+	ushort sign;
+	#else
 	ushort sign;
 	ushort intg;
+	#endif
 	uint decs[DEC_LEN];
 } dec;
 

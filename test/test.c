@@ -34,7 +34,7 @@ int main()
 	printf("a: ");
 	dec_print(&a);
 	
-	dec_square(&a, &b);
+	dec_square(&b, &a);
 
 	printf("a: ");
 	dec_print(&a);
