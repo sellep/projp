@@ -26,24 +26,6 @@ int main()
 {
 	srand(time(NULL));
 
-
-	dec a, b;
-
-	dec_rand(&a);
-
-	printf("a: ");
-	dec_print(&a);
-	
-	dec_square(&b, &a);
-
-	printf("a: ");
-	dec_print(&a);
-	printf("\nb: ");
-	dec_print(&b);
-	printf("\n");
-
-	return;
-
 	int tres;
 
 	printf("dec_uadd_commutative ");
@@ -72,6 +54,10 @@ int main()
 
 	printf("dec_mul_commutative ");
 	if ((tres = dec_mul_commutative()) != SUCCESS)
+		return FAILURE;
+
+	printf("dec_square_mul_equal ");
+	if ((tres = dec_square_mul_equal()) != SUCCESS)
 		return FAILURE;
 
 	printf("dec_uadd2i_equal ");
