@@ -31,8 +31,7 @@ void kara(dec * const c, dec * const a, dec * const b)
 	}
 
 	kara_mul(r, a, b, DEC_LEN + 1);
-
-	memcpy(c, r, sizeof(dec));
+	memcpy(c, r + 1, sizeof(dec));
 
 	if (asign == POSITIVE)
 	{

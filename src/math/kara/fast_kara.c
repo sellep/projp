@@ -34,8 +34,7 @@ void fast_kara(dec * const c, dec * const a, dec * const b)
 	}
 
 	fast_kara_mul(r, a, b, buf, DEC_LEN + 1);
-
-	memcpy(c, r, sizeof(dec));
+	memcpy(c, r + 1, sizeof(dec));
 
 	if (asign == POSITIVE)
 	{
