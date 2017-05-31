@@ -26,6 +26,24 @@ int main()
 {
 	srand(time(NULL));
 
+
+	dec a, b;
+
+	dec_rand(&a);
+
+	printf("a: ");
+	dec_print(&a);
+	
+	dec_square(&a, &b);
+
+	printf("a: ");
+	dec_print(&a);
+	printf("\nb: ");
+	dec_print(&b);
+	printf("\n");
+
+	return;
+
 	int tres;
 
 	printf("dec_uadd_commutative ");

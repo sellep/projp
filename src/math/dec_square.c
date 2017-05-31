@@ -4,7 +4,7 @@
 
 void dec_square(dec * const c, dec * const a)
 {
-	uint rc[2 * (DEC_LEN + 1)];
+	uint rc[2 * (sizeof(dec) / sizeof(uint))];
 	ushort asign = POSITIVE;
 	int i, j;
 	ulong tmp;
@@ -20,11 +20,11 @@ void dec_square(dec * const c, dec * const a)
 		asign = NEGATIVE;
 	}
 
-	for (i = DEC_LEN; i >= 0; i--)
+	for (i = DEC_LEN + 1; i >= 0; i--)
 	{
 		carry = 0;
 
-		for (j = DEC_LEN; j >= 0; j--)
+		for (j = DEC_LEN + 1; j >= 0; j--)
 		{
 			tmp = (ulong)ra[i] * ra[j] + carry + rc[i + j + 1];
 			rc[i + j + 1] = VALUE(tmp);
