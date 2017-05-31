@@ -5,8 +5,9 @@ void dec_idiv(dec * const c, dec * const a, size_t const div)
 	ssize_t i;
 	ulong tmp = 0;
 
-	c->intg = a->intg / div;
-	tmp = a->intg - (c->intg * div);
+	tmp = a->intg;
+	c->intg = tmp / div;
+	tmp = tmp - (c->intg * div);
 
 	for (i = 0; i < DEC_LEN; i++)
 	{
