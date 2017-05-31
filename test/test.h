@@ -1,8 +1,8 @@
 #ifndef __P_TEST_H
 #define __P_TEST_H
 
-#define SUCCESS 1
-#define FAILURE -1
+#define SUCCESS 0
+#define FAILURE 1
 
 #include "../src/defs.h"
 #include "../src/utils/watch.h"
@@ -12,6 +12,9 @@
 #include <stdio.h>
 
 #define ITERATIONS 100000
+
+FILE* get_log();
+void close_log(FILE const * const);
 
 int dec_add_zero();
 int dec_uadd_commutative();

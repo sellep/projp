@@ -13,5 +13,7 @@ void dec_imul(dec * const c, dec const * const a, uint const i)
 		c->decs[j] = VALUE(tmp);
 	}
 
+
 	c->intg = a->intg * i + carry;
+	c->sign = a->sign;
 }

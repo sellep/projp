@@ -1,6 +1,14 @@
 #include "../test.h"
 
 #include <stdlib.h>
+#include <string.h>
+
+
+int dec_cmp_custom(dec const * const a, dec const * const b)
+{
+	return memcmp(a, b, sizeof(dec) - sizeof(uint));
+}
+
 
 int dec_imul_idiv_equal()
 {
@@ -21,18 +29,18 @@ int dec_imul_idiv_equal()
 	for (i = 0; i < ITERATIONS; i++)
 	{
 		dec_rand(&a);	
-		div_mul = rand() % 10;
-
-		wstart(wimul);
-		dec_imul(&b, &a, div_mul);
-		wstop(wimul);
-
+		div_mul = rand() % 10 + 1;
+		
 		wstart(widiv);
-		dec_idiv(&c, &b, div_mul);
+		dec_idiv(&b, &a, div_mul);
 		wstop(widiv);
 
+		wstart(wimul);
+		dec_imul(&c, &b, div_mul);
+		wstop(wimul);		
+
 		wstart(wcmp);
-		cmp = dec_cmp(&a, &c);
+		cmp = dec_cmp_custom(&a, &c);
 		wstop(wcmp);
 
 		if (cmp != EQUAL)
@@ -59,6 +67,23 @@ int dec_imul_idiv_equal()
 		printf("\nc: ");
 		dec_print(&c);
 		printf("\ndiv: %zu\n", div_mul);
+
+		FILE *f = get_log();
+
+		if (f)
+		{
+			fprintf(f, "dec_imul_idiv_equal failure:\n");
+				
+			fprintf(f, "a: ");
+			dec_fprint(f, &a);
+			fprintf(f, "\nb: ");
+			dec_fprint(f, &b);
+			fprintf(f, "\nc: ");
+			dec_fprint(f, &c);
+			fprintf(f, "\ndiv: %zu\n", div_mul);
+
+			close_log(f);
+		}		
 	}
 
 	wfree(wimul);
