@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
 			printf("failed to write debug iframe\n");
 			goto exit;
 		}
-
+		//goto exit;
 		if (!iframe_map(pix, &ifrm, &plt))
 		{
 			printf("failed to map iframe\n");

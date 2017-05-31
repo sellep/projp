@@ -23,6 +23,12 @@ void mandelbrot(iframe const * const ifrm, dec const * const r_min, dec const * 
 			dec_imul(ci, &delta->i, y);
 			dec_add(ci, i_min, ci);
 
+			//printf("cr: ", i);
+			//dec_print(cr);
+			//printf("\nci: ");
+			//dec_print(ci);
+			//printf("\n");
+
 			i = VALUE_MAX;
 
 			//set zr2 und zi2 to 0
@@ -36,6 +42,12 @@ void mandelbrot(iframe const * const ifrm, dec const * const r_min, dec const * 
 				//zi = zi2 + ci;
 				dec_add(zi, zi2, ci);
 
+				//printf("zr: ");
+				//dec_print(zr);
+				//printf("\nzi: ");
+				//dec_print(zi);
+				//printf("\n");
+
 				//zi2 = 2 * zr * zi;
 				dec_mul(zi2, zr, zi);
 				dec_imul(zi2, zi2, 2);
@@ -43,12 +55,22 @@ void mandelbrot(iframe const * const ifrm, dec const * const r_min, dec const * 
 				//zr2 = zr * zr - zi * zi;
 				dec_mul(zr2, zr, zr);
 				dec_mul(zr, zi, zi);
+				dec_sub(zr2, zr2, zr);
 
 				i++;
+
+				//printf("zr2: ");
+				//dec_print(zr2);
+				//printf("\nzi2: ");
+				//dec_print(zi2);
+				//printf("\n");
+				//return;
 			}
 			while (i < ifrm->iterations - 1 && dec_uadd2i(zr2, zi2) < FRAC_THRESHOLD);
 
 			ifrm->frame[y * ifrm->width + x] = i;
+
+			//return;
 		}
 
 	}
