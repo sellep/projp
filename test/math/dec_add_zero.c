@@ -10,7 +10,6 @@ int dec_add_zero()
 	int cmp;
 
 	memset(&d, 0, sizeof(dec));
-	MKPOS(&d);
 
 	winit(&wadd);
 	winit(&wcmp);
@@ -24,10 +23,7 @@ int dec_add_zero()
 		dec_rand(&a);
 		dec_cpy(&b, &a);
 
-		if (a.sign == b.sign)
-		{
-			b.sign = ISPOS(&b) ? NEGATIVE : POSITIVE;
-		}
+		b.sign = ISPOS(&a) ? NEGATIVE : POSITIVE;
 
 		wstart(wadd);
 		dec_add(&c, &a, &b);

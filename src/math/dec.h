@@ -28,9 +28,9 @@ enum dec_cmp_e
 
 typedef uint CARRY;
 
-#define POSITIVE 1
-#define NEGATIVE 0
-#define ISPOS(d)((d)->sign)
+#define POSITIVE 0
+#define NEGATIVE 1
+#define ISPOS(d)((d)->sign == POSITIVE)
 #define ISNEG(d)((d)->sign == NEGATIVE)
 #define MKPOS(d)((d)->sign = POSITIVE)
 #define MKNEG(d)((d)->sign = NEGATIVE)

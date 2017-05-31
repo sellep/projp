@@ -21,6 +21,8 @@ int dec_uadd_commutative()
 
 		MKPOS(&a);
 		MKPOS(&b);
+		MKPOS(&c);
+		MKPOS(&d);
 
 		wstart(wadd);
 		dec_uadd(&c, &a, &b);
