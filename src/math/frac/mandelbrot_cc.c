@@ -7,8 +7,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#define IDX(buf, w, y)(buf+y*w)
-
 void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * const delta, ssize_t const threads)
 {
 	ssize_t y;
@@ -37,7 +35,7 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 
 		if (fork() == 0)
 		{
-			mandelbrot_row(IDX(sm, ifrm->width, y), width, y, iterations, min, delta);
+			mandelbrot_row(buf + y * width, width, y, iterations, min, delta);
 			exit(EXIT_SUCCESS);
 		}
 
