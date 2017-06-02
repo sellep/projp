@@ -26,4 +26,13 @@ void mandelbrot_row(uint * const, ssize_t const, ssize_t const, size_t const, cm
 void mandelbrot_cc(iframe * const, cmplx const * const, cmplx const * const, ssize_t const);
 void mandelbrot(iframe const * const, dec const * const, dec const * const, cmplx const * const);
 
+#if CUDA
+
+#define IDXX()()
+#define IDXY()()
+
+__global__ void g_mandelbrot_simple(uint*, ssize_t, ssize_t, size_t, void*, void*);
+
+#endif
+
 #endif

@@ -55,7 +55,8 @@ OBJ=watch.o \
 	bmp_write.o \
 	mandelbrot.o \
 	mandelbrot_row.o \
-	mandelbrot_cc.o
+	mandelbrot_cc.o \
+	g_mandelbrot_simple.o
 
 TST=dec_uadd_commutative.o \
 	dec_add_zero.o \
