@@ -2,11 +2,17 @@
 
 __global__ void g_mandelbrot_simple(uint *iframe, ssize_t width, ssize_t height, size_t iterations, void *min, void *delta)
 {
-	ssize_t x = IDXX();
-	ssize_t y = IDXY();
 	size_t i;
-
 	dec d[6];
+
+	ssize_t x = IDXX();
+	if (x >= width)
+		return;
+
+	ssize_t y = IDXY();
+	if (y >= height)
+		return;
+
 	dec *cr = d;
 	dec *ci = d + 1;
 	dec *zr = d + 2;
