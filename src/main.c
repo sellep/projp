@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
 
 	//invoke mandelbrot on host
 	cmplx delta;
+	cmplx min;
 	iframe ifrm;
 	color *pix;
 
@@ -91,6 +92,9 @@ int main(int argc, char *argv[])
 
 	while (TRUE)
 	{
+		min.r = proj.init_r_min;
+		min.i = proj.init_i_min;
+
 		//compute delta
 		dec_sub(&delta.r, &proj.init_r_max, &proj.init_r_min);
 		dec_sub(&delta.i, &proj.init_i_max, &proj.init_i_min);
@@ -98,8 +102,7 @@ int main(int argc, char *argv[])
 		dec_idiv(&delta.i, &delta.i, proj.height);
 
 		//invoke mandelbrot
-		//->missing multiple core implementation
-		mandelbrot(&ifrm, &proj.init_r_min, &proj.init_i_min, &delta);
+		mandelbrot_cc(&ifrm, &min, &delta, proj.host_threads)
 
 		if (!iframe_write_dbg(&ifrm, "/tmp/iframe_dbg.txt"))
 		{
