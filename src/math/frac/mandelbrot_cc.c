@@ -22,14 +22,12 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 	{
 		if (current == threads)
 		{
-			printf("wait\n");
 			wait(NULL);
 			current--;
 		}
 
 		if (y == ifrm->height)
 		{
-			printf("wait for all\n");
 			while (current > 0)
 			{
 				wait(NULL);
@@ -43,10 +41,6 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 		{
 			mandelbrot_row(sm + y * ifrm->width, ifrm->width, y, ifrm->iterations, min, delta);
 			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			printf("forked %d\n", y + 1);
 		}
 
 		current++;
