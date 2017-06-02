@@ -61,11 +61,22 @@ void palette_ensure(char const * const path, size_t const iterations)
 	free(bas);
 }
 
+void create_res_plt()
+{
+	palette_ensure("../res/1000.plt", 1000);
+	palette_ensure("../res/10000.plt", 10000);
+	palette_ensure("../res/100000.plt", 100000);
+	palette_ensure("../res/1000000.plt", 1000000);
+}
+
 int main(int argc, char *argv[])
 {
+	create_res_plt();
+	return;
+
 	project proj;
 	palette plt;
-	
+
 	if (!open_project(&proj, argc, argv))
 		return 1;
 
