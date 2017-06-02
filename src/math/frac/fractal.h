@@ -22,6 +22,8 @@ BOOL iframe_map(color * const, iframe const * const, palette const * const);
 BOOL iframe_writenext(iframe const * const, char const * const);
 BOOL iframe_write_dbg(iframe const * const, char const * const);
 
+void mandelbrot_row(uint * const, ssize_t const, size_t const, cmplx const * const, cmplx const * const);
+void mandelbrot_cc(iframe const * const, cmplx const * const, cmplx const * const, ssize_t const);
 void mandelbrot(iframe const * const, dec const * const, dec const * const, cmplx const * const);
 
 #endif
