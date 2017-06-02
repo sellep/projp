@@ -47,4 +47,5 @@ void mandelbrot_row(uint * const frame, ssize_t const width, ssize_t const y, si
 		while (i < iterations - 1 && dec_uadd2i(zr2, zi2) < FRAC_THRESHOLD);
 
 		frame[x] = i;
+	}
 }
