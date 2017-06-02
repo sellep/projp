@@ -28,9 +28,13 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 
 		if (y == ifrm->height)
 		{
-			if (current == 0)
-				break;
-			continue;
+			while (current > 0)
+			{
+				wait(NULL);
+				current--;
+			}
+
+			break;
 		}
 
 		if (fork() == 0)
