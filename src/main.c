@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 		dec_idiv(&delta.i, &delta.i, proj.height);
 
 		//invoke mandelbrot
-		mandelbrot_cc(&ifrm, &min, &delta, proj.host_threads)
+		mandelbrot_cc(&ifrm, &min, &delta, proj.host_threads);
 
 		if (!iframe_write_dbg(&ifrm, "/tmp/iframe_dbg.txt"))
 		{
