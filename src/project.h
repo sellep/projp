@@ -35,6 +35,7 @@ void project_free(project * const);
 BOOL project_exists(char const * const);
 BOOL project_create(project const * const, char const * const);
 BOOL project_read(project * const, char const * const);
+BOOL project_read_args(project * const, int const, char const * const * const);
 BOOL project_uptar(cmplx const * const, char const * const);
 
 #endif

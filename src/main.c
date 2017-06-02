@@ -9,64 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-BOOL open_project(project * const proj, int const argc, char const * const * const argv)
-{
-	if (argc != 2)
-	{
-		fprintf(stderr, "missing project file path!\n");
-		return FALSE;
-	}
-
-	if (!project_read(proj, argv[1]))
-	{
-		fprintf(stderr, "failed to load project\n");
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
-void palette_ensure(char const * const path, size_t const iterations)
-{
-	palette plt;
-	color *bas;
-	size_t bas_len;
-	size_t i;
-
-	if (fexists(path))
-		return;
-
-	plt.len = iterations;
-	plt.clr = (color*) malloc(sizeof(color) * iterations);
-
-	bas_len = iterations / 100;
-	bas = (color*) malloc(sizeof(color) * bas_len);
-
-	bas[0].r = 0;
-	bas[0].g = 0;
-	bas[0].b = 0;
-	bas[bas_len - 1].r = 0;
-	bas[bas_len - 1].g = 0;
-	bas[bas_len - 1].b = 0;
-
-	for (i = 1; i < bas_len - 1; i++)
-	{
-		color_rand(bas + i);
-	}
-
-	palette_ipol(&plt, bas, bas_len);
-	palette_write(&plt, path);
-
-	free(plt.clr);
-	free(bas);
-}
-
 int main(int argc, char *argv[])
 {
 	project proj;
 	palette plt;
 
-	if (!open_project(&proj, argc, argv))
+	if (!project_read_args(&proj, argc, argv))
 		return 1;
 
 	if (proj.debug_plt_path == NULL)

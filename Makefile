@@ -14,6 +14,7 @@ OBJ=watch.o \
 	project_exists.o \
 	project_uptar.o \
 	project_read.o \
+	project_read_args.o \
 	color_rand.o \
 	palette_write.o \
 	palette_ipol.o \
