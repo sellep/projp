@@ -28,8 +28,8 @@ void mandelbrot(iframe const * const, dec const * const, dec const * const, cmpl
 
 #if CUDA
 
-#define IDXX()()
-#define IDXY()()
+#define IDXX()(blockDim.x * blockIdx.x + threadIdx.x)
+#define IDXY()(blockDim.y * blockIdx.y + threadIdx.y)
 
 __global__ void g_mandelbrot_simple(uint*, ssize_t, ssize_t, size_t, void*, void*);
 
