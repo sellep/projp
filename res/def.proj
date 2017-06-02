@@ -1,10 +1,10 @@
 #this is a default project
 
 #target bitmap width
-width=80
+width=800
 
 #target bitmap height
-height=60
+height=600
 
 #fractal max iterations
 iterations=1000

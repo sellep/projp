@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
 			goto exit;
 		}
 
-		if (!bmp_write(proj.width, proj.height, pix, "/tmp/frac.bmp"))
+		if (!bmp_write(proj.width, proj.height, pix, "/home/pascal/projp/res/frac.bmp"))
 		{
 			printf("failed to write bitmap\n");
 			goto exit;
