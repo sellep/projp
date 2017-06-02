@@ -35,7 +35,7 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 
 		if (fork() == 0)
 		{
-			mandelbrot_row(sm + y * width, width, y, iterations, min, delta);
+			mandelbrot_row(sm + y * ifrm->width, ifrm->width, y, ifrm->iterations, min, delta);
 			exit(EXIT_SUCCESS);
 		}
 
