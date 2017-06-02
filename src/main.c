@@ -61,19 +61,8 @@ void palette_ensure(char const * const path, size_t const iterations)
 	free(bas);
 }
 
-void create_res_plt()
-{
-	palette_ensure("../res/1000.plt", 1000);
-	palette_ensure("../res/10000.plt", 10000);
-	palette_ensure("../res/100000.plt", 100000);
-	palette_ensure("../res/1000000.plt", 1000000);
-}
-
 int main(int argc, char *argv[])
 {
-	create_res_plt();
-	return;
-
 	project proj;
 	palette plt;
 
@@ -85,8 +74,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "debug palette path not configured!");
 		return 1;
 	}
-
-	palette_ensure(proj.debug_plt_path, proj.iterations);
 
 	if (!palette_read(&plt, proj.debug_plt_path))
 	{
@@ -109,7 +96,7 @@ int main(int argc, char *argv[])
 		dec_sub(&delta.i, &proj.init_i_max, &proj.init_i_min);
 		dec_idiv(&delta.r, &delta.r, proj.width);
 		dec_idiv(&delta.i, &delta.i, proj.height);
-		
+
 		//invoke mandelbrot
 		//->missing multiple core implementation
 		mandelbrot(&ifrm, &proj.init_r_min, &proj.init_i_min, &delta);
@@ -119,7 +106,7 @@ int main(int argc, char *argv[])
 			printf("failed to write debug iframe\n");
 			goto exit;
 		}
-		goto exit;
+
 		if (!iframe_map(pix, &ifrm, &plt))
 		{
 			printf("failed to map iframe\n");

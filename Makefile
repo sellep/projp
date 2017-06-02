@@ -2,6 +2,7 @@ CC=@gcc
 CFLAGS=-Wall -v -march=haswell -fomit-frame-pointer -O3 -pipe
 
 OBJ=watch.o \
+	path_dir.o \
 	file_path_combine.o \
 	file_fsize.o \
 	file_fexists.o \

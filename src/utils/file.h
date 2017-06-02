@@ -17,6 +17,8 @@ BOOL dexists(char const * const);
 int fwrite_all(void const * const, uint const, char const * const);
 long fread_all(void * * const, char const * const);
 BOOL fnext(char * * const, char const * const);
+
 char* path_combine(char const * const, char const * const);
+BOOL path_dir(char * * const, char const * const);
 
 #endif

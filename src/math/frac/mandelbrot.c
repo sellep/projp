@@ -43,16 +43,6 @@ void mandelbrot(iframe const * const ifrm, dec const * const r_min, dec const * 
 				//zr2 = zr * zr - zi * zi;
 				dec_square(zr2, zr);
 
-				printf("zr: ");
-				dec_print(zr);
-				printf("\n");
-
-				printf("zr2: ");
-				dec_print(zr2);
-				printf("\n");
-
-				return;
-
 				dec_mul(zr, zi, zi);
 				dec_sub(zr2, zr2, zr);
 
