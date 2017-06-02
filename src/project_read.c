@@ -56,7 +56,7 @@ BOOL project_read(project * const p, char const * const path)
 
 		line[eq] = NULL_TERM;
 
-		
+
 		if (strcmp("width", line) == 0)
 		{
 			p->width = atoi(line + eq + 1);
@@ -145,6 +145,12 @@ BOOL project_read(project * const p, char const * const path)
 		if (strcmp("allow_host", line) == 0)
 		{
 			p->allow_host = line[eq + 1];
+			continue;
+		}
+
+		if (strcmp("host_threads", line) == 0)
+		{
+			p->host_threads = atoi(line + eq + 1);
 			continue;
 		}
 	}

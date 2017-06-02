@@ -21,7 +21,8 @@ debug_plt_path=/home/pascal/projp/res/1000.plt
 #iframe location
 iframe_dir_path=iframes/
 
-#allow computation on host [y/n]
+#allow computation on host (CPU) [y/n]
 allow_host=y
 
-
+#thread count for computation on host (CPU)
+host_threads=2
