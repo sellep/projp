@@ -11,13 +11,13 @@
 
 void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * const delta, ssize_t const threads)
 {
-	ssize_t forks;
+	ssize_t y;
 	ssize_t current;
 	uint *sm;
 
 	sm = mmap(NULL, sizeof(uint) * ifrm->width * ifrm->height, PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, 0, 0);
 
-	forks = 0;
+	y = 0;
 	current = 0;
 
 	while (TRUE)
@@ -28,7 +28,7 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 			current--;
 		}
 
-		if (forks == ifrm->height)
+		if (y == ifrm->height)
 		{
 			if (current == 0)
 				break;
@@ -37,12 +37,12 @@ void mandelbrot_cc(iframe * const ifrm, cmplx const * const min, cmplx const * c
 
 		if (fork() == 0)
 		{
-			mandelbrot_row(IDX(sm, ifrm->width, forks), width, iterations, min, delta);
+			mandelbrot_row(IDX(sm, ifrm->width, y), width, y, iterations, min, delta);
 			exit(EXIT_SUCCESS);
 		}
 
 		current++;
-		forks++;
+		y++;
 	}
 
 	memcpy(ifrm->frame, sm, sizeof(uint) * ifrm->width * ifrm->height);
